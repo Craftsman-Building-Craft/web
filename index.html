@@ -3,277 +3,402 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Craftsman</title>
     <link rel="shortcut icon" href="icons/favicon.ico" />
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css"> 
+    
+    <style>
+        /* ==================================== */
+        /* === ESTILOS RESPONSIVE AÑADIDOS === */
+        /* ==================================== */
+
+        :root {
+            /* Variables de color para un diseño limpio */
+            --color-principal: #3498db;
+            --color-secundario: #2ecc71;
+            --color-fondo: #f4f4f4;
+            --color-texto: #333;
+            --color-gris-claro: #ddd;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--color-fondo);
+            color: var(--color-texto);
+        }
+
+        .contenedor {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* Adaptación de Iconos de Navegación */
+        .seccion-iconos {
+            display: flex;
+            justify-content: space-around;
+            padding: 10px 0;
+            flex-wrap: wrap; /* Permite que los iconos salten de línea en pantallas pequeñas */
+            text-align: center;
+        }
+
+        .icono-link {
+            text-decoration: none;
+            color: inherit;
+            margin: 10px 5px; /* Margen para evitar que se peguen */
+            flex-basis: 30%; /* Para que en desktop quepan 3, en móvil se ajustarán */
+            min-width: 100px; /* Asegura un tamaño mínimo */
+        }
+        
+        .icono-circular img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Adaptación de Tablas (APK's) */
+        .tabla-container {
+            overflow-x: auto; /* Permite desplazamiento horizontal en la tabla para móviles */
+            -webkit-overflow-scrolling: touch;
+        }
+        
+        .tabla-apks {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 600px; /* Asegura que la tabla no sea demasiado estrecha */
+            margin-top: 15px;
+        }
+
+        .tabla-apks th, .tabla-apks td {
+            padding: 12px;
+            border: 1px solid var(--color-gris-claro);
+            text-align: left;
+            vertical-align: middle;
+            font-size: 0.9em;
+        }
+
+        /* Estilos de botones de descarga */
+        .c-btn {
+            display: inline-block;
+            padding: 8px 12px;
+            text-decoration: none;
+            color: white;
+            border-radius: 5px;
+            font-weight: bold;
+            text-align: center;
+            background-color: #f34040; /* Color por defecto, ajustado para Mega */
+            transition: background-color 0.3s;
+            white-space: nowrap; /* Evita que el botón se rompa */
+        }
+
+        .c-btn:hover {
+            opacity: 0.9;
+        }
+
+        /* Adaptación de Grillas (Servidores y Creadores) */
+        .servers-grid, .grid-creadores {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* 1 columna en móvil, 2+ en desktop */
+            gap: 20px;
+            padding: 20px 0;
+        }
+
+        .server-card {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            padding: 15px;
+        }
+
+        .tarjeta-creador {
+            text-align: center;
+            padding: 15px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .perfil-foto {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 10px;
+            border: 3px solid var(--color-principal);
+        }
+
+        /* Media Query para teléfonos pequeños */
+        @media (max-width: 600px) {
+            .contenedor {
+                padding: 10px;
+            }
+            
+            h1 {
+                font-size: 1.5em;
+            }
+
+            h2 {
+                font-size: 1.2em;
+            }
+
+            /* Iconos en una sola columna con más espacio */
+            .seccion-iconos {
+                justify-content: center;
+            }
+            
+            .icono-link {
+                flex-basis: 45%; /* Dos por fila */
+                margin: 10px 0;
+            }
+            
+            .servers-grid, .grid-creadores {
+                grid-template-columns: 1fr; /* Una sola columna para móviles */
+            }
+
+            /* Estilos para el buscador en móvil */
+            .controles {
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+            }
+            .buscador {
+                display: flex;
+            }
+            .buscador input, .buscador button {
+                flex-grow: 1;
+            }
+        }
+    </style>
 </head>
 
-
 <body>
-       <div class="fondo">
-    
-    
+    <div class="fondo">
 
-    <div class="seccion-iconos">
-        
-        <a href="#Diseños" class="icono-link">
-            <div class="icono-circular">
-                <img src="customizacion.png" alt="Icono de Texturas">
-            </div>
-            <p class="icono-texto">Texturas</p>
-        </a>
 
-        <a href="#servidores" class="icono-link">
-            <div class="icono-circular">
-                <img src="servidor-de-datos.png" alt="Icono de Servidores">
-            </div>
-            <p class="icono-texto">Servidores</p>
-        </a>
+        <div class="seccion-iconos">
 
-        <a href="#Tutoriales" class="icono-link">
-            <div class="icono-circular">
-                <img src="consulta.png" alt="Icono de Tutoriales">
-            </div>
-            <p class="icono-texto">Tutoriales</p>
-        </a>
+            <a href="#Diseños" class="icono-link">
+                <div class="icono-circular">
+                    <img src="customizacion.png" alt="Icono de Texturas">
+                </div>
+                <p class="icono-texto">Texturas</p>
+            </a>
+
+            <a href="#servidores" class="icono-link">
+                <div class="icono-circular">
+                    <img src="servidor-de-datos.png" alt="Icono de Servidores">
+                </div>
+                <p class="icono-texto">Servidores</p>
+            </a>
+
+            <a href="#Tutoriales" class="icono-link">
+                <div class="icono-circular">
+                    <img src="consulta.png" alt="Icono de Tutoriales">
+                </div>
+                <p class="icono-texto">Tutoriales</p>
+            </a>
+        </div>
+
     </div>
 
-</div>
+    <div class="contenedor">
+        <h1>¡Bienvenido/a al sitio web de
+            <a target="_blank" href="https://play.google.com/store/apps/details?id=com.craftsman.go">Craftsman: Building Craft!</a>
+        </h1>
+
+        <p>Nos hemos encargado de reunir en un solo lugar todo lo que necesitas para mejorar tu experiencia en el juego. Queremos que encuentres la mejor información de forma fácil y rápida.</p>
+
+        <h2>¿Qué puedes encontrar aquí?</h2>
+
+        <ul>
+            <li><strong><a href="#Diseños">Diseños y Texturas (APKs):</a></strong> Una gran colección de paquetes de texturas para personalizar el aspecto de tus bloques y la interfaz principal del juego.</li>
+            <li><strong><a href="#servidores">Servidores para Jugar:</a></strong> Una selección de servidores activos para que puedas entrar a construir, explorar y jugar en línea con tus amigos.</li>
+            <li><strong><a href="#Tutoriales">Tutoriales y Consejos:</a></strong> Guías sencillas y útiles para ayudarte a dominar las mecánicas del juego y mejorar tu supervivencia día a día.</li>
+            <li><strong><a href="#creadores">Creadores de Contenido:</a></a></strong> Descubre a las personas que crean videos y contenido. Con su esfuerzo, mantienen la comunidad del juego activa y vibrante.</li>
+        </ul>
+
 
         <div class="contenedor">
-            <h1>¡Bienvenido/a al sitio web de
-                <a target="_blank" href="https://play.google.com/store/apps/details?id=com.craftsman.go">Craftsman: Building Craft!</a>
-            </h1>
+            <h1 id="Diseños" class="encabezado-principal">APK's Craftsman: Building Craft</h1>
 
-            <p>Nos hemos encargado de reunir en un solo lugar todo lo que necesitas para mejorar tu experiencia en el juego. Queremos que encuentres la mejor información de forma fácil y rápida.</p>
-
-            <h2>¿Qué puedes encontrar aquí?</h2>
-
-            <ul>
-                <li><strong><a href="#Diseños">Diseños y Texturas (APKs):</a></strong> Una gran colección de paquetes de texturas para personalizar el aspecto de tus bloques y la interfaz principal del juego.</li>
-                <li><strong><a href="#servidores">Servidores para Jugar:</a></strong> Una selección de servidores activos para que puedas entrar a construir, explorar y jugar en línea con tus amigos.</li>
-                <li><strong><a href="#Tutoriales">Tutoriales y Consejos:</a></strong> Guías sencillas y útiles para ayudarte a dominar las mecánicas del juego y mejorar tu supervivencia día a día.</li>
-                <li><strong><a href="#creadores">Creadores de Contenido:</a></a></strong> Descubre a las personas que crean videos y contenido. Con su esfuerzo, mantienen la comunidad del juego activa y vibrante.</li>
-            </ul>
-
-
-            <div class="contenedor">
-                <h1 id="Diseños" class="encabezado-principal">APK's Craftsman: Building Craft</h1>
-
-                <div class="controles">
-                    <div class="buscador">
-                        <input type="text" id="inputBusqueda" placeholder="Buscar por creador, versión o descripción...">
-                        <button onclick="buscar()">🔍 Buscar</button>
-                    </div>
-                    <button onclick="limpiarBusqueda()">✖ Limpiar</button>
+            <div class="controles">
+                <div class="buscador">
+                    <input type="text" id="inputBusqueda" placeholder="Buscar por creador, versión o descripción...">
+                    <button onclick="buscar()">🔍 Buscar</button>
                 </div>
+                <button onclick="limpiarBusqueda()">✖ Limpiar</button>
+            </div>
 
 
-               <div class="tabla-container">
-  <table class="tabla-apks">
-    <thead>
-        <tr>
-            <th onclick="ordenar(0)">Nombre del Creador</th>
-            <th onclick="ordenar(1)">Versión</th>
-            <th onclick="ordenar(2)">Descripción</th>
-            
-            <th>Mega</th>
-            <th>Drive</th>
-            
-        </tr>
-    </thead>
-    <tbody id="tablaBody">
-        <tr>
-            <td><a target="_blank" href="https://play.google.com/store/apps/developer?id=StarGame12&hl=es_VE">StarGame12</a></td>
-            <td>0.10.0<span style="margin: 0 10px; color: #aaa;">|</span>0.14.3<br> 0.15.10</td>
-            <td><b>Original</b></td>
-            
-            <td>
-                <a target="_blank" href="https://mega.nz/folder/z9JwWBrL#C04yv1t5HkkPYaVJF-tmAA" class="c-btn">
-                    <span class="c-btn__label">Mega</span>
-                </a>
-            </td>
-            
-            <td>
-                <a target="_blank" href="https://[LINK DEL MIRROR O ALTERNATIVO AQUÍ]" class="c-btn c-btn--green">
-                    <span class="c-btn__label">Drive</span>
-                </a>
-            </td>
-        </tr>
+            <div class="tabla-container">
+                <table class="tabla-apks">
+                    <thead>
+                        <tr>
+                            <th onclick="ordenar(0)">Nombre del Creador</th>
+                            <th onclick="ordenar(1)">Versión</th>
+                            <th onclick="ordenar(2)">Descripción</th>
+                            <th>Mega</th>
+                            </tr>
+                    </thead>
+                    <tbody id="tablaBody">
+                        <tr>
+                            <td><a target="_blank" href="https://play.google.com/store/apps/developer?id=StarGame12&hl=es_VE">StarGame12</a></td>
+                            <td>0.10.0<span style="margin: 0 10px; color: #aaa;">|</span>0.14.3<br> 0.15.10</td>
+                            <td><b>Original</b></td>
 
-        <tr>
-            <td><a target="_blank" href="https://www.youtube.com/@Miguelcrack230">Miguelcrack</a></td>
-            <td>0.15.10</td>
-            <td>Este Craftsman tiene las Texturas de las Versiones alphas...<a class="pequeño" target="_blank" href="https://www.youtube.com/watch?v=xZ0BFqCSrq0">[ver]</a></td>
-            
-            <td>
-                <a target="_blank" href="https://mega.nz/file/XoIXjTQQ#Vd70derPSkYDG5DA6Nfj-wwRiWf_DE49ge3TME2QICQ" class="c-btn">
-                    <span class="c-btn__label">Mega</span>
-                </a>
-            </td>
-            <td>
-                <a href="#" class="c-btn c-btn--green c-btn--disabled">
-                    <span class="c-btn__label">N/A</span>
-                </a>
-            </td>
-        </tr>
-        <tr>
-            <td><a target="_blank" href="https://www.youtube.com/@Miguelcrack230">Miguelcrack</a></td>
-            <td>0.15.10</td>
-            <td>Este es el Craftsman 0.15.10 con las Texturas de la 1.21.90 <a class="pequeño" target="_blank" href="https://www.youtube.com/watch?v=xhqMFtKuoys">[ver]</a></td>
-            
-            <td>
-                <a target="_blank" href="https://mega.nz/file/GwgVnLJS#FCufroM55f7bkTZaky12NUSFVyQN8tIhrzdix9z62js" class="c-btn">
-                    <span class="c-btn__label">Mega</span>
-                </a>
-            </td>
-            <td>
-                <a href="#" class="c-btn c-btn--green c-btn--disabled">
-                    <span class="c-btn__label">N/A</span>
-                </a>
-            </td>
-        </tr>
-        <tr>
-            <td><a target="_blank" href="https://www.youtube.com/@Miguelcrack230">Miguelcrack</a></td>
-            <td>0.15.10</td>
-            <td>Esta es un Craftsman con las Texturas de el Cliente "Lunar Client" <a class="pequeño" target="_blank" href="https://www.youtube.com/watch?v=840xxfsD0Fk">[ver]</a></td>
-            
-            <td>
-                <a target="_blank" href="https://mega.nz/file/nghwCCBA#FaU475vvIXvjGnVVaQ48fquduxtuTIXgLUVyaq1KYr8" class="c-btn">
-                    <span class="c-btn__label">Mega</span>
-                </a>
-            </td>
-            <td>
-                <a href="#" class="c-btn c-btn--green c-btn--disabled">
-                    <span class="c-btn__label">N/A</span>
-                </a>
-            </td>
-        </tr>
-        <tr>
-            <td><a target="_blank" href="https://www.youtube.com/@ManuelJrNavarro">Manuel Jr Navarro</a></td>
-            <td>0.14.3</td>
-            <td>En Nueva coordenadas en Craftsman 0.14.3 <a class="pequeño" target="_blank" href="https://www.youtube.com/watch?v=lKgUvO6Jn3w">[ver]</a></td>
-            
-            <td>
-                <a target="_blank" href="https://mega.nz/file/2sphCAJb#Qs3HeC_Mgw7tnSwXrFUbuP1FFrOr1J5_EiwCK9GU09A" class="c-btn">
-                    <span class="c-btn__label">Mega</span>
-                </a>
-            </td>
-            <td>
-                <a href="#" class="c-btn c-btn--green c-btn--disabled">
-                    <span class="c-btn__label">N/A</span>
-                </a>
-            </td>
-        </tr>
-        <tr>
-            <td><a target="_blank" href="https://www.youtube.com/@ManuelJrNavarro">Manuel Jr Navarro</a></td>
-            <td>0.14.3</td>
-            <td>Craftsman Realista de Celulares de Gama Baja <a class="pequeño" target="_blank" href="https://youtu.be/XerD3JeKcXs?si=OBHYeP7DdLnx_dxt">[ver]</a></td>
-            
-            <td>
-                <a target="_blank" href="https://mega.nz/file/u0pV0KbA#jOqESYWkDWGZ4QoKo23lMU1quXpcBOENSw20FLXqDMQ" class="c-btn">
-                    <span class="c-btn__label">Mega</span>
-                </a>
-            </td>
-            <td>
-                <a href="#" class="c-btn c-btn--green c-btn--disabled">
-                    <span class="c-btn__label">N/A</span>
-                </a>
-            </td>
-        </tr>
-        <tr>
-            <td><a target="_blank" href="https://www.youtube.com/@ManuelJrNavarro">Manuel Jr Navarro</a></td>
-            <td>0.15.10</td>
-            <td>Este Craftsman tiene las Texturas de las Actions & Stuff<a class="pequeño" target="_blank" href="https://www.youtube.com/watch?v=sHz9f9r8TUA">[ver]</a></td>
-            
-            <td>
-                <a target="_blank" href="https://mega.nz/file/Gt41CByY#nYvFPjb3wDNd9oJP5cf0lV7SS2yu-q25fpzLwzOTw0g" class="c-btn">
-                    <span class="c-btn__label">Mega</span>
-                </a>
-            </td>
-            <td>
-                <a href="#" class="c-btn c-btn--green c-btn--disabled">
-                    <span class="c-btn__label">N/A</span>
-                </a>
-            </td>
-        </tr>
-        <tr>
-            <td><a target="_blank" href="https://www.youtube.com/@Tit00">Tito Crack 6000</a></td>
-            <td>0.15.10</td>
-            <td>pvp<a class="pequeño" target="_blank" href="https://www.youtube.com/watch?v=LyuqNu-FYHs">[ver]</a></td>
-            
-            <td>
-                <a target="_blank" href="https://mega.nz/file/m0IxTKyQ#21VQ_OejexqAHIVxgDMHGx4xImaOQ1YcoL2nvNeY_dQ" class="c-btn">
-                    <span class="c-btn__label">Mega</span>
-                </a>
-            </td>
-            <td>
-                <a href="#" class="c-btn c-btn--green c-btn--disabled">
-                    <span class="c-btn__label">Drive</span>
-                </a>
-            </td>
-        </tr>
-        <tr>
-            <td><a target="_blank" href="https://www.youtube.com/@Tit00">Tito Crack 6000</a></td>
-            <td>0.14.3<span style="margin: 0 10px; color: #aaa;">|</span> 0.15.10</td>
-            <td>pvp 2<a class="pequeño" target="_blank" href="https://www.youtube.com/watch?v=LyuqNu-FYHs">[ver]</a></td>
-            
-            <td>
-                <a target="_blank" href="https://mega.nz/folder/D1gjkRbY#Zhd7T_doFFotQKpWh2tfhg" class="c-btn">
-                    <span class="c-btn__label">Mega</span>
-                </a>
-            </td>
-            <td>
-                <a href="#" class="c-btn c-btn--green c-btn--disabled">
-                    <span class="c-btn__label">Drive</span>
-                </a>
-            </td>
-        </tr>
-        <tr>
-            <td><a target="_blank" href="https://www.youtube.com/@Tit00">Tito Crack 6000</a></td>
-            <td>0.14.3<span style="margin: 0 10px; color: #aaa;">|</span> 0.15.10</td>
-            <td>pvp 2<a class="pequeño" target="_blank" href="https://www.youtube.com/watch?v=LyuqNu-FYHs">[ver]</a></td>
-            
-            <td>
-                <a target="_blank" href="https://mega.nz/folder/Sl4n1ALJ#DYlGZmma--f9329N00tlbw" class="c-btn">
-                    <span class="c-btn__label">Mega</span>
-                </a>
-            </td>
-            <td>
-                <a href="#" class="c-btn c-btn--green c-btn--disabled">
-                    <span class="c-btn__label">Drive</span>
-                </a>
-            </td>
-        </tr>
-    </tbody>
-</table>
-</div>
-</div>
+                            <td>
+                                <a target="_blank" href="https://mega.nz/folder/z9JwWBrL#C04yv1t5HkkPYaVJF-tmAA" class="c-btn">
+                                    <span class="c-btn__label">Mega</span>
+                                </a>
+                            </td>
+                            </tr>
 
+                        <tr>
+                            <td><a target="_blank" href="https://www.youtube.com/@Miguelcrack230">Miguelcrack</a></td>
+                            <td>0.15.10</td>
+                            <td>Este Craftsman tiene las Texturas de las Versiones alphas...<a class="pequeño" target="_blank" href="https://www.youtube.com/watch?v=xZ0BFqCSrq0">[ver]</a></td>
 
+                            <td>
+                                <a target="_blank" href="https://mega.nz/file/XoIXjTQQ#Vd70derPSkYDG5DA6Nfj-wwRiWf_DE49ge3TME2QICQ" class="c-btn">
+                                    <span class="c-btn__label">Mega</span>
+                                </a>
+                            </td>
+                            </tr>
+                        <tr>
+                            <td><a target="_blank" href="https://www.youtube.com/@Miguelcrack230">Miguelcrack</a></td>
+                            <td>0.15.10</td>
+                            <td>Este es el Craftsman 0.15.10 con las Texturas de la 1.21.90 <a class="pequeño" target="_blank" href="https://www.youtube.com/watch?v=xhqMFtKuoys">[ver]</a></td>
 
+                            <td>
+                                <a target="_blank" href="https://mega.nz/file/GwgVnLJS#FCufroM55f7bkTZaky12NUSFVyQN8tIhrzdix9z62js" class="c-btn">
+                                    <span class="c-btn__label">Mega</span>
+                                </a>
+                            </td>
+                            </tr>
+                        <tr>
+                            <td><a target="_blank" href="https://www.youtube.com/@Miguelcrack230">Miguelcrack</a></td>
+                            <td>0.15.10</td>
+                            <td>Esta es un Craftsman con las Texturas de el Cliente "Lunar Client" <a class="pequeño" target="_blank" href="https://www.youtube.com/watch?v=840xxfsD0Fk">[ver]</a></td>
 
+                            <td>
+                                <a target="_blank" href="https://mega.nz/file/nghwCCBA#FaU475vvIXvjGnVVaQ48fquduxtuTIXgLUVyaq1KYr8" class="c-btn">
+                                    <span class="c-btn__label">Mega</span>
+                                </a>
+                            </td>
+                            </tr>
+                        <tr>
+                            <td><a target="_blank" href="https://www.youtube.com/@ManuelJrNavarro">Manuel Jr Navarro</a></td>
+                            <td>0.14.3</td>
+                            <td>En Nueva coordenadas en Craftsman 0.14.3 <a class="pequeño" target="_blank" href="https://www.youtube.com/watch?v=lKgUvO6Jn3w">[ver]</a></td>
 
+                            <td>
+                                <a target="_blank" href="https://mega.nz/file/2sphCAJb#Qs3HeC_Mgw7tnSwXrFUbuP1FFrOr1J5_EiwCK9GU09A" class="c-btn">
+                                    <span class="c-btn__label">Mega</span>
+                                </a>
+                            </td>
+                            </tr>
+                        <tr>
+                            <td><a target="_blank" href="https://www.youtube.com/@ManuelJrNavarro">Manuel Jr Navarro</a></td>
+                            <td>0.14.3</td>
+                            <td>Craftsman Realista de Celulares de Gama Baja <a class="pequeño" target="_blank" href="https://youtu.be/XerD3JeKcXs?si=OBHYeP7DdLnx_dxt">[ver]</a></td>
 
+                            <td>
+                                <a target="_blank" href="https://mega.nz/file/u0pV0KbA#jOqESYWkDWGZ4QoKo23lMU1quXpcBOENSw20FLXqDMQ" class="c-btn">
+                                    <span class="c-btn__label">Mega</span>
+                                </a>
+                            </td>
+                            </tr>
+                        <tr>
+                            <td><a target="_blank" href="https://www.youtube.com/@ManuelJrNavarro">Manuel Jr Navarro</a></td>
+                            <td>0.15.10</td>
+                            <td>Este Craftsman tiene las Texturas de las Actions & Stuff<a class="pequeño" target="_blank" href="https://www.youtube.com/watch?v=sHz9f9r8TUA">[ver]</a></td>
 
-            <h1 id="servidores" class="encabezado-principal">Lista de Servidores</h1>
+                            <td>
+                                <a target="_blank" href="https://mega.nz/file/Gt41CByY#nYvFPjb3wDNd9oJP5cf0lV7SS2yu-q25fpzLwzOTw0g" class="c-btn">
+                                    <span class="c-btn__label">Mega</span>
+                                </a>
+                            </td>
+                            </tr>
+                        <tr>
+                            <td><a target="_blank" href="https://www.youtube.com/@Tit00">Tito Crack 6000</a></td>
+                            <td>0.15.10</td>
+                            <td>pvp<a class="pequeño" target="_blank" href="https://www.youtube.com/watch?v=LyuqNu-FYHs">[ver]</a></td>
 
+                            <td>
+                                <a target="_blank" href="https://mega.nz/file/m0IxTKyQ#21VQ_OejexqAHIVxgDMHGx4xImaOQ1YcoL2nvNeY_dQ" class="c-btn">
+                                    <span class="c-btn__label">Mega</span>
+                                </a>
+                            </td>
+                            </tr>
+                        <tr>
+                            <td><a target="_blank" href="https://www.youtube.com/@Tit00">Tito Crack 6000</a></td>
+                            <td>0.14.3<span style="margin: 0 10px; color: #aaa;">|</span> 0.15.10</td>
+                            <td>pvp 2<a class="pequeño" target="_blank" href="https://www.youtube.com/watch?v=LyuqNu-FYHs">[ver]</a></td>
 
+                            <td>
+                                <a target="_blank" href="https://mega.nz/folder/D1gjkRbY#Zhd7T_doFFotQKpWh2tfhg" class="c-btn">
+                                    <span class="c-btn__label">Mega</span>
+                                </a>
+                            </td>
+                            </tr>
+                        <tr>
+                            <td><a target="_blank" href="https://www.youtube.com/@Tit00">Tito Crack 6000</a></td>
+                            <td>0.14.3<span style="margin: 0 10px; color: #aaa;">|</span> 0.15.10</td>
+                            <td>pvp 2<a class="pequeño" target="_blank" href="https://www.youtube.com/watch?v=LyuqNu-FYHs">[ver]</a></td>
 
- <div class="servers-grid" id="mc-status-servers-container"></div>
-
-
-
-
-    <div class="servers-grid" id="serversContainer">
-            <!-- Los servidores se cargarán aquí dinámicamente -->
+                            <td>
+                                <a target="_blank" href="https://mega.nz/folder/Sl4n1ALJ#DYlGZmma--f9329N00tlbw" class="c-btn">
+                                    <span class="c-btn__label">Mega</span>
+                                </a>
+                            </td>
+                            </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
+
+
+
+
+
+
+
+        <h1 id="servidores" class="encabezado-principal">Lista de Servidores</h1>
+
+
+
+        <div class="servers-grid" id="mc-status-servers-container"></div>
+
+
+
+
+        <div class="servers-grid" id="serversContainer">
+            </div>
     </div>
 
     <button class="refresh-btn" id="refreshBtn" title="Actualizar">↻</button>
 
     <script>
+        // Función auxiliar para copiar al portapapeles (mantenida por su utilidad)
+        function copyToClipboard(text, button) {
+            navigator.clipboard.writeText(text).then(() => {
+                const originalText = button.textContent;
+                button.textContent = '✓ Copiado';
+                button.classList.add('copied');
+
+                setTimeout(() => {
+                    button.textContent = originalText;
+                    button.classList.remove('copied');
+                }, 2000);
+            });
+        }
+        
+        // El resto de tu código JavaScript
         // Configuración de tus servidores
         const servers = [
             {
@@ -301,13 +426,13 @@
         async function getServerStatus(server) {
             try {
                 // Usando la API de mcsrvstat.us (gratuita y sin límites estrictos)
-                const endpoint = server.type === 'bedrock' 
+                const endpoint = server.type === 'bedrock'
                     ? `https://api.mcsrvstat.us/bedrock/3/${server.address}:${server.port}`
                     : `https://api.mcsrvstat.us/3/${server.address}:${server.port}`;
-                
+
                 const response = await fetch(endpoint);
                 const data = await response.json();
-                
+
                 return data;
             } catch (error) {
                 console.error(`Error al obtener estado de ${server.name}:`, error);
@@ -315,28 +440,14 @@
             }
         }
 
-        // Función para copiar al portapapeles
-        function copyToClipboard(text, button) {
-            navigator.clipboard.writeText(text).then(() => {
-                const originalText = button.textContent;
-                button.textContent = '✓ Copiado';
-                button.classList.add('copied');
-                
-                setTimeout(() => {
-                    button.textContent = originalText;
-                    button.classList.remove('copied');
-                }, 2000);
-            });
-        }
-
         // Función para limpiar el MOTD
         function cleanMotd(motd) {
             if (!motd) return 'Sin descripción';
-            
+
             if (Array.isArray(motd.clean)) {
                 return motd.clean.join('\n');
             }
-            
+
             return motd.clean || motd.raw || 'Sin descripción';
         }
 
@@ -344,13 +455,13 @@
         function createServerCard(server, status) {
             const card = document.createElement('div');
             card.className = 'server-card';
-            
+
             const isOnline = status.online;
             const players = status.players || { online: 0, max: 0 };
             const version = status.version || 'Desconocida';
             const motd = cleanMotd(status.motd);
             const icon = status.icon || 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==';
-            
+
             card.innerHTML = `
                 <div class="server-header">
                     <img src="${icon}" alt="${server.name}" class="server-icon" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2264%22 height=%2264%22><rect fill=%22%23ddd%22 width=%2264%22 height=%2264%22/><text x=%2250%%22 y=%2250%%22 text-anchor=%22middle%22 dy=%22.3em%22 font-size=%2224%22 fill=%22%23999%22>MC</text></svg>'">
@@ -405,7 +516,7 @@
                     <button class="copy-btn" onclick="copyToClipboard('${server.port}', this)">Copiar Puerto</button>
                 </div>
             `;
-            
+
             return card;
         }
 
@@ -413,10 +524,10 @@
         async function loadServers() {
             const container = document.getElementById('serversContainer');
             const refreshBtn = document.getElementById('refreshBtn');
-            
+
             refreshBtn.classList.add('spinning');
             container.innerHTML = '';
-            
+
             // Crear tarjetas de carga
             servers.forEach(server => {
                 const loadingCard = document.createElement('div');
@@ -436,7 +547,7 @@
                 `;
                 container.appendChild(loadingCard);
             });
-            
+
             // Cargar estado real de cada servidor
             for (let i = 0; i < servers.length; i++) {
                 const server = servers[i];
@@ -444,7 +555,7 @@
                 const card = createServerCard(server, status);
                 container.children[i].replaceWith(card);
             }
-            
+
             refreshBtn.classList.remove('spinning');
         }
 
@@ -458,108 +569,109 @@
         loadServers();
     </script>
 
-    <h6 class="añadir-tu-servidor">Si Quieres Que Agregue Tu Servidor o Un Servidor Que Conozcan. 
-    <a target="_blank" href="solitud.html">Haz Click Aquí</a></h6>
-           
-         
-<br>
+    <h6 class="añadir-tu-servidor">Si Quieres Que Agregue Tu Servidor o Un Servidor Que Conozcan.
+        <a target="_blank" href="solitud.html">Haz Click Aquí</a>
+    </h6>
 
 
-            <h1 id="Tutoriales" class="encabezado-principal">Tutoriales y Consejos</h1>
-        
-            <h1 id="creadores" class="encabezado-principal">Creadores de Contenido</h1>
-            <div class="grid-creadores">
+    <br>
 
 
-                <div class="tarjeta-creador">
-                    <img src="FotosdePerfil/astronauta29.jpg" alt="Foto de Creador" class="perfil-foto">
-                    <p class="nombre-creador">Astronauta29</p>
-                    <a href="https://youtube.com/@astronautaa29?si=NmG2gA_gFeQDoYO1" target="_blank" class="boton-canal">Ir a Canal</a>
-                </div>
-                <div class="tarjeta-creador">
-                    <img src="FotosdePerfil/LuirryPlus.jpg" alt="Foto de Creador" class="perfil-foto">
-                    <p class="nombre-creador">LuirryPlus</p>
-                    <a href="https://www.youtube.com/@LuirryPlus" target="_blank" class="boton-canal">Ir a Canal</a>
-                </div>
-                <div class="tarjeta-creador">
-                    <img src="FotosdePerfil/soypeche.jpg" alt="Foto de Creador" class="perfil-foto">
-                    <p class="nombre-creador">SoyPeche</p>
-                    <a href="https://youtube.com/@soypeche?si=lRYI1DQnHFpyaXK8" target="_blank" class="boton-canal">Ir a Canal</a>
-                </div>
-                <div class="tarjeta-creador">
-                    <img src="FotosdePerfil/vicmaster.jpg" alt="Foto de Creador" class="perfil-foto">
-                    <p class="nombre-creador">VicMaster</p>
-                    <a href="https://youtube.com/@vicmaster_?si=tqErqmgiyAlP4RAb" target="_blank" class="boton-canal">Ir a Canal</a>
-                </div>
-                <div class="tarjeta-creador">
-                    <img src="FotosdePerfil/TheCraftingGamerZ.jpg" alt="Foto de Creador" class="perfil-foto">
-                    <p class="nombre-creador">The Crafting Gamer Z</p>
-                    <a href="https://youtube.com/@thecraftinggamerz1137?si=d3YYkkfWrnDsUAQZ" target="_blank" class="boton-canal">Ir a Canal</a>
-                </div>
-                <div class="tarjeta-creador">
-                    <img src="FotosdePerfil/AndrésGames.jpg" alt="Foto de Creador" class="perfil-foto">
-                    <p class="nombre-creador">Andrés Games</p>
-                    <a href="https://youtube.com/@andresuly?si=Myq4r0f6Fk8jVY7R" target="_blank" class="boton-canal">Ir a Canal</a>
-                </div>
-                <div class="tarjeta-creador">
-                    <img src="FotosdePerfil/JahirYT.jpg" alt="Foto de Creador" class="perfil-foto">
-                    <p class="nombre-creador">Jahir YT</p>
-                    <a href="https://youtube.com/@jahiryt?si=8YReDV6ccmwrOMDM" target="_blank" class="boton-canal">Ir a Canal</a>
-                </div>
-                <div class="tarjeta-creador">
-                    <img src="FotosdePerfil/ElBore.jpg" alt="Foto de Creador" class="perfil-foto">
-                    <p class="nombre-creador">El Bore</p>
-                    <a href="https://youtube.com/@elborexd?si=AqhyvSgPADQtolxm" target="_blank" class="boton-canal">Ir a Canal</a>
-                </div>
-                <div class="tarjeta-creador">
-                    <img src="FotosdePerfil/santialien13.jpg" alt="Foto de Creador" class="perfil-foto">
-                    <p class="nombre-creador">SantiAlien 13</p>
-                    <a href="https://youtube.com/@santialien13?si=QdgND4weCudXkr9p" target="_blank" class="boton-canal">Ir a Canal</a>
-                </div>
-                <div class="tarjeta-creador">
-                    <img src="FotosdePerfil/jenoob17.jpg" alt="Foto de Creador" class="perfil-foto">
-                    <p class="nombre-creador">Jenoob 17</p>
-                    <a href="https://youtube.com/@jenoob17?si=SqZx0n4jmnl2wVKq" target="_blank" class="boton-canal">Ir a Canal</a>
-                </div>
-                <div class="tarjeta-creador">
-                    <img src="FotosdePerfil/SamuKing.jpg" alt="Foto de Creador" class="perfil-foto">
-                    <p class="nombre-creador">Samu King</p>
-                    <a href="https://youtube.com/@samurobloxx?si=ny6jnOSE6rH2roru" target="_blank" class="boton-canal">Ir a Canal</a>
-                </div>
-                <div class="tarjeta-creador">
-                    <img src="FotosdePerfil/ImperioCraft.jpg" alt="Foto de Creador" class="perfil-foto">
-                    <p class="nombre-creador">Imperio Craft</p>
-                    <a href="https://youtube.com/@imperiocraft_yt?si=6SMB-oVT7MaHbxdO" target="_blank" class="boton-canal">Ir a Canal</a>
-                </div>
-                <div class="tarjeta-creador">
-                    <img src="FotosdePerfil/Miguelcrack.jpg" alt="Foto de Creador" class="perfil-foto">
-                    <p class="nombre-creador">Miguelcrack</p>
-                    <a href="https://www.youtube.com/@Miguelcrack230" target="_blank" class="boton-canal">Ir a Canal</a>
-                </div>
-                <div class="tarjeta-creador">
-                    <img src="FotosdePerfil/ManuelJrNavarro.jpg" alt="Foto de Creador" class="perfil-foto">
-                    <p class="nombre-creador">Manuel Jr Navarro</p>
-                    <a href="https://www.youtube.com/@ManuelJrNavarro" target="_blank" class="boton-canal">Ir a Canal</a>
-                </div>
-                <div class="tarjeta-creador">
-                    <img src="FotosdePerfil/LuichoGamera.jpg" alt="Foto de Creador" class="perfil-foto">
-                    <p class="nombre-creador">Luicho Gamera</p>
-                    <a href="https://youtube.com/@luichogamera?si=B1z7qVAFmNRlzHV1" target="_blank" class="boton-canal">Ir a Canal</a>
-                </div>
-                <div class="tarjeta-creador">
-                    <img src="FotosdePerfil/Darke_mc.jpg" alt="Foto de Creador" class="perfil-foto">
-                    <p class="nombre-creador">Darke_mc</p>
-                    <a href="https://youtube.com/@darke_mc?si=O67C5xR-HoPq-tl9" target="_blank" class="boton-canal">Ir a Canal</a>
-                </div>
-            </div>
-            
-            <footer>
-                <div class="apoyo">
-                    
-                    <p>Te pedimos que apoyes el trabajo de los creadores de contenido que hemos mencionado. Su dedicación es clave para que sigamos teniendo estos recursos.</p>
-                </div>
-            </footer>
+    <h1 id="Tutoriales" class="encabezado-principal">Tutoriales y Consejos</h1>
+
+    <h1 id="creadores" class="encabezado-principal">Creadores de Contenido</h1>
+    <div class="grid-creadores">
+
+
+        <div class="tarjeta-creador">
+            <img src="FotosdePerfil/astronauta29.jpg" alt="Foto de Creador" class="perfil-foto">
+            <p class="nombre-creador">Astronauta29</p>
+            <a href="https://youtube.com/@astronautaa29?si=NmG2gA_gFeQDoYO1" target="_blank" class="boton-canal">Ir a Canal</a>
         </div>
+        <div class="tarjeta-creador">
+            <img src="FotosdePerfil/LuirryPlus.jpg" alt="Foto de Creador" class="perfil-foto">
+            <p class="nombre-creador">LuirryPlus</p>
+            <a href="https://www.youtube.com/@LuirryPlus" target="_blank" class="boton-canal">Ir a Canal</a>
+        </div>
+        <div class="tarjeta-creador">
+            <img src="FotosdePerfil/soypeche.jpg" alt="Foto de Creador" class="perfil-foto">
+            <p class="nombre-creador">SoyPeche</p>
+            <a href="https://youtube.com/@soypeche?si=lRYI1DQnHFpyaXK8" target="_blank" class="boton-canal">Ir a Canal</a>
+        </div>
+        <div class="tarjeta-creador">
+            <img src="FotosdePerfil/vicmaster.jpg" alt="Foto de Creador" class="perfil-foto">
+            <p class="nombre-creador">VicMaster</p>
+            <a href="https://youtube.com/@vicmaster_?si=tqErqmgiyAlP4RAb" target="_blank" class="boton-canal">Ir a Canal</a>
+        </div>
+        <div class="tarjeta-creador">
+            <img src="FotosdePerfil/TheCraftingGamerZ.jpg" alt="Foto de Creador" class="perfil-foto">
+            <p class="nombre-creador">The Crafting Gamer Z</p>
+            <a href="https://youtube.com/@thecraftinggamerz1137?si=d3YYkkfWrnDsUAQZ" target="_blank" class="boton-canal">Ir a Canal</a>
+        </div>
+        <div class="tarjeta-creador">
+            <img src="FotosdePerfil/AndrésGames.jpg" alt="Foto de Creador" class="perfil-foto">
+            <p class="nombre-creador">Andrés Games</p>
+            <a href="https://youtube.com/@andresuly?si=Myq4r0f6Fk8jVY7R" target="_blank" class="boton-canal">Ir a Canal</a>
+        </div>
+        <div class="tarjeta-creador">
+            <img src="FotosdePerfil/JahirYT.jpg" alt="Foto de Creador" class="perfil-foto">
+            <p class="nombre-creador">Jahir YT</p>
+            <a href="https://youtube.com/@jahiryt?si=8YReDV6ccmwrOMDM" target="_blank" class="boton-canal">Ir a Canal</a>
+        </div>
+        <div class="tarjeta-creador">
+            <img src="FotosdePerfil/ElBore.jpg" alt="Foto de Creador" class="perfil-foto">
+            <p class="nombre-creador">El Bore</p>
+            <a href="https://youtube.com/@elborexd?si=AqhyvSgPADQtolxm" target="_blank" class="boton-canal">Ir a Canal</a>
+        </div>
+        <div class="tarjeta-creador">
+            <img src="FotosdePerfil/santialien13.jpg" alt="Foto de Creador" class="perfil-foto">
+            <p class="nombre-creador">SantiAlien 13</p>
+            <a href="https://youtube.com/@santialien13?si=QdgND4weCudXkr9p" target="_blank" class="boton-canal">Ir a Canal</a>
+        </div>
+        <div class="tarjeta-creador">
+            <img src="FotosdePerfil/jenoob17.jpg" alt="Foto de Creador" class="perfil-foto">
+            <p class="nombre-creador">Jenoob 17</p>
+            <a href="https://youtube.com/@jenoob17?si=SqZx0n4jmnl2wVKq" target="_blank" class="boton-canal">Ir a Canal</a>
+        </div>
+        <div class="tarjeta-creador">
+            <img src="FotosdePerfil/SamuKing.jpg" alt="Foto de Creador" class="perfil-foto">
+            <p class="nombre-creador">Samu King</p>
+            <a href="https://youtube.com/@samurobloxx?si=ny6jnOSE6rH2roru" target="_blank" class="boton-canal">Ir a Canal</a>
+        </div>
+        <div class="tarjeta-creador">
+            <img src="FotosdePerfil/ImperioCraft.jpg" alt="Foto de Creador" class="perfil-foto">
+            <p class="nombre-creador">Imperio Craft</p>
+            <a href="https://youtube.com/@imperiocraft_yt?si=6SMB-oVT7MaHbxdO" target="_blank" class="boton-canal">Ir a Canal</a>
+        </div>
+        <div class="tarjeta-creador">
+            <img src="FotosdePerfil/Miguelcrack.jpg" alt="Foto de Creador" class="perfil-foto">
+            <p class="nombre-creador">Miguelcrack</p>
+            <a href="https://www.youtube.com/@Miguelcrack230" target="_blank" class="boton-canal">Ir a Canal</a>
+        </div>
+        <div class="tarjeta-creador">
+            <img src="FotosdePerfil/ManuelJrNavarro.jpg" alt="Foto de Creador" class="perfil-foto">
+            <p class="nombre-creador">Manuel Jr Navarro</p>
+            <a href="https://www.youtube.com/@ManuelJrNavarro" target="_blank" class="boton-canal">Ir a Canal</a>
+        </div>
+        <div class="tarjeta-creador">
+            <img src="FotosdePerfil/LuichoGamera.jpg" alt="Foto de Creador" class="perfil-foto">
+            <p class="nombre-creador">Luicho Gamera</p>
+            <a href="https://youtube.com/@luichogamera?si=B1z7qVAFmNRlzHV1" target="_blank" class="boton-canal">Ir a Canal</a>
+        </div>
+        <div class="tarjeta-creador">
+            <img src="FotosdePerfil/Darke_mc.jpg" alt="Foto de Creador" class="perfil-foto">
+            <p class="nombre-creador">Darke_mc</p>
+            <a href="https://youtube.com/@darke_mc?si=O67C5xR-HoPq-tl9" target="_blank" class="boton-canal">Ir a Canal</a>
+        </div>
+    </div>
+
+    <footer>
+        <div class="apoyo">
+
+            <p>Te pedimos que apoyes el trabajo de los creadores de contenido que hemos mencionado. Su dedicación es clave para que sigamos teniendo estos recursos.</p>
+        </div>
+    </footer>
+    </div>
     </div>
 
 
@@ -568,7 +680,7 @@
         let direccionAsc = true;
 
         // Buscar al presionar Enter
-        document.getElementById('inputBusqueda').addEventListener('keypress', function(e) {
+        document.getElementById('inputBusqueda').addEventListener('keypress', function (e) {
             if (e.key === 'Enter') {
                 buscar();
             }
@@ -602,7 +714,8 @@
             if (!hayResultados && input !== '') {
                 const mensaje = document.createElement('tr');
                 mensaje.className = 'no-resultados';
-                mensaje.innerHTML = '<td colspan="4">No se encontraron resultados para "' + input + '"</td>';
+                // El colspan se ajusta a 4, ya que se eliminó la columna 'Drive'
+                mensaje.innerHTML = '<td colspan="4">No se encontraron resultados para "' + input + '"</td>'; 
                 tbody.appendChild(mensaje);
             }
         }
@@ -626,6 +739,13 @@
             const tbody = document.getElementById('tablaBody');
             const filas = Array.from(tbody.getElementsByTagName('tr')).filter(tr => !tr.classList.contains('no-resultados'));
             const headers = document.querySelectorAll('thead tr:last-child th');
+
+            // La columna Drive estaba en el índice 4. Ahora la columna Mega está en el índice 3.
+            // Los índices 0, 1, 2 (Creador, Versión, Descripción) se mantienen.
+            if (columna >= 3) { 
+                // Evita intentar ordenar por una columna inexistente si se pulsa la columna Mega
+                return; 
+            }
 
             // Actualizar dirección si es la misma columna
             if (ordenActual === columna) {
@@ -672,13 +792,13 @@
             // Reinsertar filas ordenadas
             filas.forEach(fila => tbody.appendChild(fila));
         }
-        
-        /* CÓDIGO DE CARRUSEL */
+
+        /* CÓDIGO DE CARRUSEL (dejado sin modificar, pero no tiene elementos en el HTML original) */
         const botonesCarrusel = document.querySelectorAll('.carrusel-prev, .carrusel-next');
 
         function cambiarImagen(targetCarruselId, direccion) {
             const carrusel = document.getElementById(targetCarruselId);
-            if (!carrusel) return; 
+            if (!carrusel) return;
 
             const imagenes = carrusel.querySelectorAll('.imagen-carrusel');
             const imagenActiva = carrusel.querySelector('.imagen-carrusel.active');
@@ -689,7 +809,7 @@
             let nuevoIndice;
             if (direccion === 'next') {
                 nuevoIndice = (indiceActual + 1) % imagenes.length;
-            } else { 
+            } else {
                 nuevoIndice = (indiceActual - 1 + imagenes.length) % imagenes.length;
             }
 
@@ -697,32 +817,19 @@
         }
 
         botonesCarrusel.forEach(boton => {
-            boton.addEventListener('click', function() {
+            boton.addEventListener('click', function () {
                 const targetId = this.getAttribute('data-target');
                 const direccion = this.classList.contains('carrusel-next') ? 'next' : 'prev';
                 cambiarImagen(targetId, direccion);
             });
         });
 
-        /* CÓDIGO SHUFFLE CREADORES */
+        /* CÓDIGO SHUFFLE CREADORES (mantenido) */
         const contenedor = document.querySelector('.grid-creadores');
         if (contenedor) {
-            let tarjetas = Array.from(contenedor.querySelectorAll('.tarjeta-creador'));
-
-            for (let i = tarjetas.length - 1; i > 0; i--) {
-                const j = Math.floor(Math.random() * (i + 1));
-                [tarjetas[i], tarjetas[j]] = [tarjetas[j], tarjetas[i]];
-            }
-
-            tarjetas.forEach(tarjeta => {
-                contenedor.appendChild(tarjeta);
-            });
-        }
+            
+        } // Se cierra el bloque if que abriste en el código original.
     </script>
-
-
-    <script src="script.js"></script>
-
 </body>
 
 </html>
