@@ -1023,3 +1023,89 @@ tbody tr:hover {
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.7);
     border-color: #666666; /* Resaltamos un poco el borde */
 }
+
+/* ================================================= */
+/* MODIFICACIONES RESPONSIVAS (AÑADIR AL FINAL) */
+/* ================================================= */
+
+/* * 1. Solución para la Tabla (Crítica en Móviles) 
+ * Permite el desplazamiento horizontal SÓLO para la tabla 
+ */
+.tabla-container {
+    overflow-x: auto;
+    width: 100%;
+    -webkit-overflow-scrolling: touch; /* Mejor desplazamiento en iOS */
+    margin-bottom: 20px;
+}
+
+/* Le damos un ancho mínimo a la tabla para forzar el scroll en móviles */
+.tabla-apks {
+    min-width: 650px; 
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.tabla-apks td, .tabla-apks th {
+    padding: 8px 5px; /* Padding reducido para ahorrar espacio */
+    font-size: 0.9em;
+    white-space: nowrap; /* Evita que el texto de las celdas se rompa */
+}
+
+/* Hace que los botones de Mega/Drive ocupen todo el ancho de la celda */
+.tabla-apks .c-btn {
+    display: block; 
+    padding: 5px;
+    margin: 2px 0;
+    font-size: 0.8em;
+}
+
+/* Los controles de búsqueda se apilan verticalmente */
+.controles {
+    display: flex;
+    flex-direction: column; 
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+/* * 2. Estilos para Servidores (Apilados en Móvil) 
+ */
+.servers-grid {
+    display: flex;
+    flex-direction: column; /* Apilados verticalmente en móvil */
+    gap: 20px;
+    margin-top: 20px;
+}
+
+/* 3. Media Query para Tabletas y Escritorio (Anchos grandes) */
+@media (min-width: 768px) {
+    
+    /* Revierte el comportamiento de scroll de la tabla para PC */
+    .tabla-container {
+        overflow-x: hidden; 
+    }
+
+    .tabla-apks {
+        min-width: auto; /* Permite que el ancho se ajuste al contenedor */
+        width: 100%;
+    }
+    
+    /* Revierte el estilo de los botones para PC (vuelven a estar en línea) */
+    .tabla-apks .c-btn {
+        display: inline-block;
+        padding: 5px 10px;
+        margin: 0;
+    }
+
+    /* Revierte la disposición de los controles a horizontal */
+    .controles {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    /* Vuelve a mostrar las tarjetas de servidor en cuadrícula */
+    .servers-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); 
+        gap: 20px;
+    }
+}
