@@ -6,174 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Craftsman</title>
     <link rel="shortcut icon" href="icons/favicon.ico" />
-    <link rel="stylesheet" href="styles.css"> 
-    
-    <style>
-        /* ==================================== */
-        /* === ESTILOS RESPONSIVE AÑADIDOS === */
-        /* ==================================== */
-
-        :root {
-            /* Variables de color para un diseño limpio */
-            --color-principal: #3498db;
-            --color-secundario: #2ecc71;
-            --color-fondo: #f4f4f4;
-            --color-texto: #333;
-            --color-gris-claro: #ddd;
-        }
-
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: var(--color-fondo);
-            color: var(--color-texto);
-        }
-
-        .contenedor {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        
-        /* Adaptación de Iconos de Navegación */
-        .seccion-iconos {
-            display: flex;
-            justify-content: space-around;
-            padding: 10px 0;
-            flex-wrap: wrap; /* Permite que los iconos salten de línea en pantallas pequeñas */
-            text-align: center;
-        }
-
-        .icono-link {
-            text-decoration: none;
-            color: inherit;
-            margin: 10px 5px; /* Margen para evitar que se peguen */
-            flex-basis: 30%; /* Para que en desktop quepan 3, en móvil se ajustarán */
-            min-width: 100px; /* Asegura un tamaño mínimo */
-        }
-        
-        .icono-circular img {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            object-fit: cover;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-        
-        /* Adaptación de Tablas (APK's) */
-        .tabla-container {
-            overflow-x: auto; /* Permite desplazamiento horizontal en la tabla para móviles */
-            -webkit-overflow-scrolling: touch;
-        }
-        
-        .tabla-apks {
-            width: 100%;
-            border-collapse: collapse;
-            min-width: 600px; /* Asegura que la tabla no sea demasiado estrecha */
-            margin-top: 15px;
-        }
-
-        .tabla-apks th, .tabla-apks td {
-            padding: 12px;
-            border: 1px solid var(--color-gris-claro);
-            text-align: left;
-            vertical-align: middle;
-            font-size: 0.9em;
-        }
-
-        /* Estilos de botones de descarga */
-        .c-btn {
-            display: inline-block;
-            padding: 8px 12px;
-            text-decoration: none;
-            color: white;
-            border-radius: 5px;
-            font-weight: bold;
-            text-align: center;
-            background-color: #f34040; /* Color por defecto, ajustado para Mega */
-            transition: background-color 0.3s;
-            white-space: nowrap; /* Evita que el botón se rompa */
-        }
-
-        .c-btn:hover {
-            opacity: 0.9;
-        }
-
-        /* Adaptación de Grillas (Servidores y Creadores) */
-        .servers-grid, .grid-creadores {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* 1 columna en móvil, 2+ en desktop */
-            gap: 20px;
-            padding: 20px 0;
-        }
-
-        .server-card {
-            background-color: white;
-            border-radius: 10px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            padding: 15px;
-        }
-
-        .tarjeta-creador {
-            text-align: center;
-            padding: 15px;
-            background-color: white;
-            border-radius: 10px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        }
-
-        .perfil-foto {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            object-fit: cover;
-            margin-bottom: 10px;
-            border: 3px solid var(--color-principal);
-        }
-
-        /* Media Query para teléfonos pequeños */
-        @media (max-width: 600px) {
-            .contenedor {
-                padding: 10px;
-            }
-            
-            h1 {
-                font-size: 1.5em;
-            }
-
-            h2 {
-                font-size: 1.2em;
-            }
-
-            /* Iconos en una sola columna con más espacio */
-            .seccion-iconos {
-                justify-content: center;
-            }
-            
-            .icono-link {
-                flex-basis: 45%; /* Dos por fila */
-                margin: 10px 0;
-            }
-            
-            .servers-grid, .grid-creadores {
-                grid-template-columns: 1fr; /* Una sola columna para móviles */
-            }
-
-            /* Estilos para el buscador en móvil */
-            .controles {
-                display: flex;
-                flex-direction: column;
-                gap: 10px;
-            }
-            .buscador {
-                display: flex;
-            }
-            .buscador input, .buscador button {
-                flex-grow: 1;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
@@ -243,12 +76,12 @@
                             <th onclick="ordenar(1)">Versión</th>
                             <th onclick="ordenar(2)">Descripción</th>
                             <th>Mega</th>
-                            </tr>
+                        </tr>
                     </thead>
                     <tbody id="tablaBody">
                         <tr>
                             <td><a target="_blank" href="https://play.google.com/store/apps/developer?id=StarGame12&hl=es_VE">StarGame12</a></td>
-                            <td>0.10.0<span style="margin: 0 10px; color: #aaa;">|</span>0.14.3<br> 0.15.10</td>
+                            <td>0.10.0<span class="separator-bar">|</span>0.14.3<br> 0.15.10</td>
                             <td><b>Original</b></td>
 
                             <td>
@@ -256,7 +89,7 @@
                                     <span class="c-btn__label">Mega</span>
                                 </a>
                             </td>
-                            </tr>
+                        </tr>
 
                         <tr>
                             <td><a target="_blank" href="https://www.youtube.com/@Miguelcrack230">Miguelcrack</a></td>
@@ -268,7 +101,7 @@
                                     <span class="c-btn__label">Mega</span>
                                 </a>
                             </td>
-                            </tr>
+                        </tr>
                         <tr>
                             <td><a target="_blank" href="https://www.youtube.com/@Miguelcrack230">Miguelcrack</a></td>
                             <td>0.15.10</td>
@@ -279,7 +112,7 @@
                                     <span class="c-btn__label">Mega</span>
                                 </a>
                             </td>
-                            </tr>
+                        </tr>
                         <tr>
                             <td><a target="_blank" href="https://www.youtube.com/@Miguelcrack230">Miguelcrack</a></td>
                             <td>0.15.10</td>
@@ -290,7 +123,7 @@
                                     <span class="c-btn__label">Mega</span>
                                 </a>
                             </td>
-                            </tr>
+                        </tr>
                         <tr>
                             <td><a target="_blank" href="https://www.youtube.com/@ManuelJrNavarro">Manuel Jr Navarro</a></td>
                             <td>0.14.3</td>
@@ -301,7 +134,7 @@
                                     <span class="c-btn__label">Mega</span>
                                 </a>
                             </td>
-                            </tr>
+                        </tr>
                         <tr>
                             <td><a target="_blank" href="https://www.youtube.com/@ManuelJrNavarro">Manuel Jr Navarro</a></td>
                             <td>0.14.3</td>
@@ -312,7 +145,7 @@
                                     <span class="c-btn__label">Mega</span>
                                 </a>
                             </td>
-                            </tr>
+                        </tr>
                         <tr>
                             <td><a target="_blank" href="https://www.youtube.com/@ManuelJrNavarro">Manuel Jr Navarro</a></td>
                             <td>0.15.10</td>
@@ -323,7 +156,7 @@
                                     <span class="c-btn__label">Mega</span>
                                 </a>
                             </td>
-                            </tr>
+                        </tr>
                         <tr>
                             <td><a target="_blank" href="https://www.youtube.com/@Tit00">Tito Crack 6000</a></td>
                             <td>0.15.10</td>
@@ -334,10 +167,10 @@
                                     <span class="c-btn__label">Mega</span>
                                 </a>
                             </td>
-                            </tr>
+                        </tr>
                         <tr>
                             <td><a target="_blank" href="https://www.youtube.com/@Tit00">Tito Crack 6000</a></td>
-                            <td>0.14.3<span style="margin: 0 10px; color: #aaa;">|</span> 0.15.10</td>
+                            <td>0.14.3<span class="separator-bar">|</span> 0.15.10</td>
                             <td>pvp 2<a class="pequeño" target="_blank" href="https://www.youtube.com/watch?v=LyuqNu-FYHs">[ver]</a></td>
 
                             <td>
@@ -345,10 +178,10 @@
                                     <span class="c-btn__label">Mega</span>
                                 </a>
                             </td>
-                            </tr>
+                        </tr>
                         <tr>
                             <td><a target="_blank" href="https://www.youtube.com/@Tit00">Tito Crack 6000</a></td>
-                            <td>0.14.3<span style="margin: 0 10px; color: #aaa;">|</span> 0.15.10</td>
+                            <td>0.14.3<span class="separator-bar">|</span> 0.15.10</td>
                             <td>pvp 2<a class="pequeño" target="_blank" href="https://www.youtube.com/watch?v=LyuqNu-FYHs">[ver]</a></td>
 
                             <td>
@@ -356,7 +189,7 @@
                                     <span class="c-btn__label">Mega</span>
                                 </a>
                             </td>
-                            </tr>
+                        </tr>
                     </tbody>
                 </table>
             </div>
@@ -378,7 +211,7 @@
 
 
         <div class="servers-grid" id="serversContainer">
-            </div>
+        </div>
     </div>
 
     <button class="refresh-btn" id="refreshBtn" title="Actualizar">↻</button>
@@ -715,7 +548,7 @@
                 const mensaje = document.createElement('tr');
                 mensaje.className = 'no-resultados';
                 // El colspan se ajusta a 4, ya que se eliminó la columna 'Drive'
-                mensaje.innerHTML = '<td colspan="4">No se encontraron resultados para "' + input + '"</td>'; 
+                mensaje.innerHTML = '<td colspan="4">No se encontraron resultados para "' + input + '"</td>';
                 tbody.appendChild(mensaje);
             }
         }
@@ -734,101 +567,6 @@
                 mensajeExistente.remove();
             }
         }
-
-        function ordenar(columna) {
-            const tbody = document.getElementById('tablaBody');
-            const filas = Array.from(tbody.getElementsByTagName('tr')).filter(tr => !tr.classList.contains('no-resultados'));
-            const headers = document.querySelectorAll('thead tr:last-child th');
-
-            // La columna Drive estaba en el índice 4. Ahora la columna Mega está en el índice 3.
-            // Los índices 0, 1, 2 (Creador, Versión, Descripción) se mantienen.
-            if (columna >= 3) { 
-                // Evita intentar ordenar por una columna inexistente si se pulsa la columna Mega
-                return; 
-            }
-
-            // Actualizar dirección si es la misma columna
-            if (ordenActual === columna) {
-                direccionAsc = !direccionAsc;
-            } else {
-                direccionAsc = true;
-                ordenActual = columna;
-            }
-
-            // Limpiar clases anteriores
-            headers.forEach(h => {
-                h.classList.remove('asc', 'desc');
-            });
-
-            // Agregar clase actual
-            headers[columna].classList.add(direccionAsc ? 'asc' : 'desc');
-
-            // Ordenar filas
-            filas.sort((a, b) => {
-                const textoA = a.cells[columna].textContent.trim().toLowerCase();
-                const textoB = b.cells[columna].textContent.trim().toLowerCase();
-
-                // Comparación para versiones numéricas
-                if (columna === 1) {
-                    const versionA = textoA.split('.').map(Number);
-                    const versionB = textoB.split('.').map(Number);
-
-                    for (let i = 0; i < Math.max(versionA.length, versionB.length); i++) {
-                        const numA = versionA[i] || 0;
-                        const numB = versionB[i] || 0;
-                        if (numA !== numB) {
-                            return direccionAsc ? numA - numB : numB - numA;
-                        }
-                    }
-                    return 0;
-                }
-
-                // Comparación alfabética
-                if (textoA < textoB) return direccionAsc ? -1 : 1;
-                if (textoA > textoB) return direccionAsc ? 1 : -1;
-                return 0;
-            });
-
-            // Reinsertar filas ordenadas
-            filas.forEach(fila => tbody.appendChild(fila));
-        }
-
-        /* CÓDIGO DE CARRUSEL (dejado sin modificar, pero no tiene elementos en el HTML original) */
-        const botonesCarrusel = document.querySelectorAll('.carrusel-prev, .carrusel-next');
-
-        function cambiarImagen(targetCarruselId, direccion) {
-            const carrusel = document.getElementById(targetCarruselId);
-            if (!carrusel) return;
-
-            const imagenes = carrusel.querySelectorAll('.imagen-carrusel');
-            const imagenActiva = carrusel.querySelector('.imagen-carrusel.active');
-
-            const indiceActual = Array.from(imagenes).indexOf(imagenActiva);
-            imagenActiva.classList.remove('active');
-
-            let nuevoIndice;
-            if (direccion === 'next') {
-                nuevoIndice = (indiceActual + 1) % imagenes.length;
-            } else {
-                nuevoIndice = (indiceActual - 1 + imagenes.length) % imagenes.length;
-            }
-
-            imagenes[nuevoIndice].classList.add('active');
-        }
-
-        botonesCarrusel.forEach(boton => {
-            boton.addEventListener('click', function () {
-                const targetId = this.getAttribute('data-target');
-                const direccion = this.classList.contains('carrusel-next') ? 'next' : 'prev';
-                cambiarImagen(targetId, direccion);
-            });
-        });
-
-        /* CÓDIGO SHUFFLE CREADORES (mantenido) */
-        const contenedor = document.querySelector('.grid-creadores');
-        if (contenedor) {
-            
-        } // Se cierra el bloque if que abriste en el código original.
     </script>
 </body>
 
