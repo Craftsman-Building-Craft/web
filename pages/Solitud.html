@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agregar Servidor</title>
+    <link rel="stylesheet" href="styles-add.css">
+    <style>
+        .input-group { 
+            max-width: 500px; 
+            margin: 0 auto; /* Centrar el contenedor en el cuerpo */
+            padding: 30px;
+            /* Aquí iría el estilo de tarjeta (background-color, border, etc.) */
+        }
+    </style>
+</head>
+<body>
+    <h1>Agregar Nuevo Servidor</h1>
+    
+    <div class="input-group"> 
+        <form id="add-server-form" 
+              action="https://formsubmit.co/xx.diegoperez@gmail.com" 
+              method="POST" 
+              target="_blank"> <input type="text" name="_honey" style="display:none;">
+
+            <label for="server-name">Nombre del Servidor:</label>
+            <input type="text" id="server-name" name="ServerName" required>
+
+            <label for="server-address">Dirección IP:</label>
+            <input type="text" id="server-address" name="IPAddress" required>
+
+            <label for="server-port">Puerto:</label>
+            <input type="number" id="server-port" name="Port" value="25565" required>
+
+            <button class="btn" type="submit">Agregar Servidor</button>
+        </form>
+    </div>
+
+</body>
+</html>
