@@ -1,0 +1,125 @@
+/* ========================================================= */
+/* --- ESTILO PARA LA PÁGINA DE AGREGAR SERVIDOR --- */
+/* ========================================================= */
+
+/* 1. Estilo base del Body (Asumiendo el mismo fondo) */
+body {
+    font-family: Arial, sans-serif;
+    background-image: url(Fondo.png); /* Asegúrate que la ruta a Fondo.png sea correcta */
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: #ffffff;
+    line-height: 1.6;
+    padding: 20px;
+    
+    /* Centra el formulario en la página */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+/* 2. Estilo del Título (Consistente con el h1 anterior) */
+h1 {
+    color: #ffffff;
+    border-bottom: 2px solid #aaaaaa;
+    padding-bottom: 10px;
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+/* 3. Contenedor del Formulario (Estilo de "Tarjeta") */
+.input-group {
+    /* Basado en .server-card y .contenedor */
+    background-color: #00000063;
+    border: 1px solid #444444;
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    
+    /* Definimos un ancho para el formulario */
+    max-width: 500px;
+    width: 100%;
+}
+
+/* 4. Layout del Formulario */
+#add-server-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Espacio entre cada elemento (label/input) */
+}
+
+/* 5. Estilo de las Etiquetas (Labels) */
+#add-server-form label {
+    font-weight: bold;
+    color: #eeeeee;
+    margin-bottom: -5px; /* Acerca la etiqueta a su input */
+    font-size: 0.9em;
+}
+
+/* 6. Estilo de los Inputs (Consistente con los inputs anteriores) */
+#add-server-form input[type="text"],
+#add-server-form input[type="number"] {
+    width: 100%;
+    padding: 12px 15px;
+    border: 2px solid #777777;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: all 0.3s;
+    color: white;
+    background-color: #555555;
+    box-sizing: border-box; /* Importante para que el padding no rompa el ancho */
+}
+
+/* 7. Estilo de Inputs en Focus (con acento azul) */
+#add-server-form input[type="text"]:focus,
+#add-server-form input[type="number"]:focus {
+    outline: none;
+    border-color: #4da6ff; /* Tu color de acento */
+    box-shadow: 0 0 0 3px rgba(77, 166, 255, 0.2);
+}
+
+/* 8. Estilo del Botón (Clase .btn) */
+.btn {
+    padding: 12px 25px;
+    background: #4da6ff; /* Tu color de acento */
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    transition: all 0.3s;
+    text-transform: uppercase;
+    margin-top: 10px; /* Espacio extra antes del botón */
+}
+
+.btn:hover {
+    background: #6ab0fa; /* Un azul un poco más claro al pasar el mouse */
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* ========================================================= */
+/* --- ESTILO PARA EL MENSAJE DE ÉXITO DEL FORMULARIO --- */
+/* ========================================================= */
+
+.success-message {
+    text-align: center;
+    padding: 30px; /* Un poco de espacio interno */
+    color: #ffffff;
+}
+
+.success-message h2 {
+    /* Usamos el color de acento que definimos antes */
+    color: #4da6ff; 
+    font-size: 1.8em;
+    margin-bottom: 15px;
+}
+
+.success-message p {
+    font-size: 1.1em;
+    line-height: 1.6;
+}

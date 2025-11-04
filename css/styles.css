@@ -38,17 +38,20 @@
 /* ======================================================== */
 
 body {
-    font-family: Arial, sans-serif;
-    background-attachment: fixed;
-    background-image: url(Fondo.png);
-    background-repeat: no-repeat;
-    /* CENTRADO DE FONDO (Mejora: Asegurar que el fondo cubra) */
-    background-size: cover; 
-    background-position: center center;
-    color: #ffffff;
-    line-height: 1.6;
-    margin: 0;
-    padding: 20px;
+    font-family: Arial, sans-serif;
+    background-attachment: fixed;
+    
+    /* 🟢 RUTA CORREGIDA: Desde 'assets/css/styles.css' sube a 'assets/' (..), luego entra a 'images/'. */
+    background-image: url(../images/Fondo.png); 
+    
+    background-repeat: no-repeat;
+    /* CENTRADO DE FONDO (Mejora: Asegurar que el fondo cubra) */
+    background-size: cover; 
+    background-position: center center;
+    color: #ffffff;
+    line-height: 1.6;
+    margin: 0;
+    padding: 20px;
 }
 
 h1 {

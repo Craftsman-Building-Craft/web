@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Craftsman</title>
+        <link rel="shortcut icon" href="../assets/images/favicon.ico" />
+        <link rel="stylesheet" href="../assets/css/styles.css"> 
+</head>
+
+<body>
+        <div class="fondo"> 
+
+        <div class="seccion-iconos">
+
+            <a href="#Diseños" class="icono-link">
+                <div class="icono-circular">
+                                        <img src="../assets/images/customizacion.png" alt="Icono de Texturas">
+                </div>
+                <p class="icono-texto">Texturas</p>
+            </a>
+
+            <a href="#servidores" class="icono-link">
+                <div class="icono-circular">
+                                        <img src="../assets/images/servidor-de-datos.png" alt="Icono de Servidores">
+                </div>
+                <p class="icono-texto">Servidores</p>
+            </a>
+
+            <a href="#Tutoriales" class="icono-link">
+                <div class="icono-circular">
+                                        <img src="../assets/images/consulta.png" alt="Icono de Tutoriales">
+                </div>
+                <p class="icono-texto">Tutoriales</p>
+            </a>
+        </div>
+
+    </div>
+
+    <div class="contenedor">
+        <h1>¡Bienvenido/a al sitio web de
+            <a target="_blank" href="https://play.google.com/store/apps/details?id=com.craftsman.go">Craftsman: Building Craft!</a>
+        </h1>
+
+        <p>Nos hemos encargado de reunir en un solo lugar todo lo que necesitas para mejorar tu experiencia en el juego. Queremos que encuentres la mejor información de forma fácil y rápida.</p>
+
+        <h2>¿Qué puedes encontrar aquí?</h2>
+
+        <ul>
+            <li><strong><a href="#Diseños">Diseños y Texturas (APKs):</a></strong> Una gran colección de paquetes de texturas para personalizar el aspecto de tus bloques y la interfaz principal del juego.</li>
+            <li><strong><a href="#servidores">Servidores para Jugar:</a></strong> Una selección de servidores activos para que puedas entrar a construir, explorar y jugar en línea con tus amigos.</li>
+            <li><strong><a href="#Tutoriales">Tutoriales y Consejos:</a></strong> Guías sencillas y útiles para ayudarte a dominar las mecánicas del juego y mejorar tu supervivencia día a día.</li>
+            <li><strong><a href="#creadores">Creadores de Contenido:</a></a></strong> Descubre a las personas que crean videos y contenido. Con su esfuerzo, mantienen la comunidad del juego activa y vibrante.</li>
+        </ul>
+
+
+        <div class="contenedor">
+            <h1 id="Diseños" class="encabezado-principal">APK's Craftsman: Building Craft</h1>
+
+            <div class="controles">
+                <div class="buscador">
+                    <input type="text" id="inputBusqueda" placeholder="Buscar por creador, versión o descripción...">
+                    <button onclick="buscar()">🔍 Buscar</button>
+                </div>
+                <button onclick="limpiarBusqueda()">✖ Limpiar</button>
+            </div>
+
+
+            <div class="tabla-container">
+                <table class="tabla-apks">
+                    <thead>
+                        <tr>
+                            <th onclick="ordenar(0)">Nombre del Creador</th>
+                            <th onclick="ordenar(1)">Versión</th>
+                            <th onclick="ordenar(2)">Descripción</th>
+                            <th>Mega</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tablaBody">
+                                                <tr>
+                            <td><a target="_blank" href="https://play.google.com/store/apps/developer?id=StarGame12&hl=es_VE">StarGame12</a></td>
+                            <td>0.10.0<span class="separator-bar">|</span>0.14.3<br> 0.15.10</td>
+                            <td><b>Original</b></td>
+
+                            <td>
+                                <a target="_blank" href="https://mega.nz/folder/z9JwWBrL#C04yv1t5HkkPYaVJF-tmAA" class="c-btn">
+                                    <span class="c-btn__label">Mega</span>
+                                </a>
+                            </td>
+                        </tr>
+                                            </tbody>
+                </table>
+            </div>
+        </div>
+
+
+
+
+
+
+
+        <h1 id="servidores" class="encabezado-principal">Lista de Servidores</h1>
+
+
+
+        <div class="servers-grid" id="mc-status-servers-container"></div>
+
+
+
+
+        <div class="servers-grid" id="serversContainer">
+        </div>
+    </div>
+
+    <button class="refresh-btn" id="refreshBtn" title="Actualizar">↻</button>
+
+        <h6 class="añadir-tu-servidor">Si Quieres Que Agregue Tu Servidor o Un Servidor Que Conozcan.
+        <a target="_blank" href="solitud.html">Haz Click Aquí</a>
+    </h6>
+
+
+    <br>
+
+
+    <h1 id="Tutoriales" class="encabezado-principal">Tutoriales y Consejos</h1>
+
+    <h1 id="creadores" class="encabezado-principal">Creadores de Contenido</h1>
+    <div class="grid-creadores">
+
+
+        <div class="tarjeta-creador">
+                        <img src="../assets/images/perfiles/astronauta29.jpg" alt="Foto de Creador" class="perfil-foto">
+            <p class="nombre-creador">Astronauta29</p>
+            <a href="https://youtube.com/@astronautaa29?si=NmG2gA_gFeQDoYO1" target="_blank" class="boton-canal">Ir a Canal</a>
+        </div>
+        <div class="tarjeta-creador">
+                        <img src="../assets/images/perfiles/LuirryPlus.jpg" alt="Foto de Creador" class="perfil-foto">
+            <p class="nombre-creador">LuirryPlus</p>
+            <a href="https://www.youtube.com/@LuirryPlus" target="_blank" class="boton-canal">Ir a Canal</a>
+        </div>
+        <div class="tarjeta-creador">
+                        <img src="../assets/images/perfiles/soypeche.jpg" alt="Foto de Creador" class="perfil-foto">
+            <p class="nombre-creador">SoyPeche</p>
+            <a href="https://youtube.com/@soypeche?si=lRYI1DQnHFpyaXK8" target="_blank" class="boton-canal">Ir a Canal</a>
+        </div>
+        <div class="tarjeta-creador">
+                        <img src="../assets/images/perfiles/vicmaster.jpg" alt="Foto de Creador" class="perfil-foto">
+            <p class="nombre-creador">VicMaster</p>
+            <a href="https://youtube.com/@vicmaster_?si=tqErqmgiyAlP4RAb" target="_blank" class="boton-canal">Ir a Canal</a>
+        </div>
+        <div class="tarjeta-creador">
+                        <img src="../assets/images/perfiles/TheCraftingGamerZ.jpg" alt="Foto de Creador" class="perfil-foto">
+            <p class="nombre-creador">The Crafting Gamer Z</p>
+            <a href="https://youtube.com/@thecraftinggamerz1137?si=d3YYkkfWrnDsUAQZ" target="_blank" class="boton-canal">Ir a Canal</a>
+        </div>
+        <div class="tarjeta-creador">
+                        <img src="../assets/images/perfiles/AndrésGames.jpg" alt="Foto de Creador" class="perfil-foto">
+            <p class="nombre-creador">Andrés Games</p>
+            <a href="https://youtube.com/@andresuly?si=Myq4r0f6Fk8jVY7R" target="_blank" class="boton-canal">Ir a Canal</a>
+        </div>
+        <div class="tarjeta-creador">
+                        <img src="../assets/images/perfiles/JahirYT.jpg" alt="Foto de Creador" class="perfil-foto">
+            <p class="nombre-creador">Jahir YT</p>
+            <a href="https://youtube.com/@jahiryt?si=8YReDV6ccmwrOMDM" target="_blank" class="boton-canal">Ir a Canal</a>
+        </div>
+        <div class="tarjeta-creador">
+                        <img src="../assets/images/perfiles/ElBore.jpg" alt="Foto de Creador" class="perfil-foto">
+            <p class="nombre-creador">El Bore</p>
+            <a href="https://youtube.com/@elborexd?si=AqhyvSgPADQtolxm" target="_blank" class="boton-canal">Ir a Canal</a>
+        </div>
+        <div class="tarjeta-creador">
+                        <img src="../assets/images/perfiles/santialien13.jpg" alt="Foto de Creador" class="perfil-foto">
+            <p class="nombre-creador">SantiAlien 13</p>
+            <a href="https://youtube.com/@santialien13?si=QdgND4weCudXkr9p" target="_blank" class="boton-canal">Ir a Canal</a>
+        </div>
+        <div class="tarjeta-creador">
+                        <img src="../assets/images/perfiles/jenoob17.jpg" alt="Foto de Creador" class="perfil-foto">
+            <p class="nombre-creador">Jenoob 17</p>
+            <a href="https://youtube.com/@jenoob17?si=SqZx0n4jmnl2wVKq" target="_blank" class="boton-canal">Ir a Canal</a>
+        </div>
+        <div class="tarjeta-creador">
+                        <img src="../assets/images/perfiles/SamuKing.jpg" alt="Foto de Creador" class="perfil-foto">
+            <p class="nombre-creador">Samu King</p>
+            <a href="https://youtube.com/@samurobloxx?si=ny6jnOSE6rH2roru" target="_blank" class="boton-canal">Ir a Canal</a>
+        </div>
+        <div class="tarjeta-creador">
+                        <img src="../assets/images/perfiles/ImperioCraft.jpg" alt="Foto de Creador" class="perfil-foto">
+            <p class="nombre-creador">Imperio Craft</p>
+            <a href="https://youtube.com/@imperiocraft_yt?si=6SMB-oVT7MaHbxdO" target="_blank" class="boton-canal">Ir a Canal</a>
+        </div>
+        <div class="tarjeta-creador">
+                        <img src="../assets/images/perfiles/Miguelcrack.jpg" alt="Foto de Creador" class="perfil-foto">
+            <p class="nombre-creador">Miguelcrack</p>
+            <a href="https://www.youtube.com/@Miguelcrack230" target="_blank" class="boton-canal">Ir a Canal</a>
+        </div>
+        <div class="tarjeta-creador">
+                        <img src="../assets/images/perfiles/ManuelJrNavarro.jpg" alt="Foto de Creador" class="perfil-foto">
+            <p class="nombre-creador">Manuel Jr Navarro</p>
+            <a href="https://www.youtube.com/@ManuelJrNavarro" target="_blank" class="boton-canal">Ir a Canal</a>
+        </div>
+        <div class="tarjeta-creador">
+                        <img src="../assets/images/perfiles/LuichoGamera.jpg" alt="Foto de Creador" class="perfil-foto">
+            <p class="nombre-creador">Luicho Gamera</p>
+            <a href="https://youtube.com/@luichogamera?si=B1z7qVAFmNRlzHV1" target="_blank" class="boton-canal">Ir a Canal</a>
+        </div>
+        <div class="tarjeta-creador">
+                        <img src="../assets/images/perfiles/Darke_mc.jpg" alt="Foto de Creador" class="perfil-foto">
+            <p class="nombre-creador">Darke_mc</p>
+            <a href="https://youtube.com/@darke_mc?si=O67C5xR-HoPq-tl9" target="_blank" class="boton-canal">Ir a Canal</a>
+        </div>
+    </div>
+
+    <footer>
+        <div class="apoyo">
+
+            <p>Te pedimos que apoyes el trabajo de los creadores de contenido que hemos mencionado. Su dedicación es clave para que sigamos teniendo estos recursos.</p>
+        </div>
+    </footer>
+    </div>
+    </div>
+
+        <script src="../assets/js/script.js"></script>
+</body>
+
+</html>
