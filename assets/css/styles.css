@@ -42,7 +42,7 @@ body {
     background-attachment: fixed;
     
     /* 🟢 RUTA CORREGIDA: Desde 'assets/css/styles.css' sube a 'assets/' (..), luego entra a 'images/'. */
-    background-image: url(Fondo.png); 
+    background-image: url(images/Fondo.png); 
     
     background-repeat: no-repeat;
     /* CENTRADO DE FONDO (Mejora: Asegurar que el fondo cubra) */
