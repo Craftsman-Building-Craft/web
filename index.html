@@ -540,6 +540,223 @@
         }
 
         /* ==========================================
+           7. LISTA DE SERVIDORES (ESTILO LINEAL)
+           ========================================== */
+        .servers-grid {
+            display: flex;
+            flex-direction: column; /* Lista vertical */
+            gap: 15px;
+            margin-bottom: 30px;
+            margin-top: 20px;
+        }
+
+        /* Fila del Servidor */
+        .server-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: #00000063;
+            border: 1px solid #444444;
+            border-radius: 10px;
+            padding: 15px 20px;
+            transition: transform 0.2s, background 0.2s;
+        }
+
+        .server-row:hover {
+            background-color: #00000099;
+            transform: translateX(5px);
+            border-color: #666666;
+        }
+
+        .server-row-left {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .server-icon-small {
+            width: 50px;
+            height: 50px;
+            border-radius: 8px;
+            object-fit: cover;
+        }
+
+        .server-info-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .server-name-row {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: white;
+        }
+
+        .server-status-row {
+            font-size: 0.9em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            display: inline-block;
+        }
+        .dot.online { background-color: #00b894; box-shadow: 0 0 5px #00b894; }
+        .dot.offline { background-color: #ff4757; }
+
+        /* Botón Jugar */
+        .btn-jugar {
+            background-color: #00b894;
+            color: white;
+            padding: 10px 25px;
+            border: none;
+            border-radius: 25px;
+            font-weight: bold;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s;
+            box-shadow: 0 4px 10px rgba(0, 184, 148, 0.3);
+        }
+
+        .btn-jugar:hover {
+            background-color: #00a383;
+            transform: scale(1.05);
+            box-shadow: 0 6px 15px rgba(0, 184, 148, 0.5);
+        }
+
+        /* --- VENTANA MODAL (POPUP) --- */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(4px);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background: linear-gradient(135deg, #55efc4 0%, #00b894 100%);
+            padding: 35px;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 450px;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
+            border: 4px solid white;
+            animation: popup 0.3s ease-out;
+        }
+
+        @keyframes popup {
+            from { transform: scale(0.7); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            color: white;
+            font-size: 30px;
+            font-weight: bold;
+            cursor: pointer;
+            line-height: 20px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .modal-content h2 {
+            color: white;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+            margin-bottom: 25px;
+            font-size: 2em;
+            border-bottom: 2px solid rgba(255,255,255,0.5);
+            padding-bottom: 10px;
+        }
+
+        .modal-info-row {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .info-box {
+            flex: 1;
+            background: rgba(255, 255, 255, 0.25);
+            padding: 15px;
+            border: 2px solid white;
+            border-radius: 10px;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .info-box .label { font-size: 0.85em; text-transform: uppercase; font-weight: 600; opacity: 0.95; margin-bottom: 5px;}
+        .info-box .value { font-weight: bold; font-family: 'Courier New', monospace; font-size: 1.2em; text-shadow: 0 1px 2px rgba(0,0,0,0.1);}
+
+        .modal-btn {
+            display: block;
+            width: 100%;
+            background-color: transparent;
+            border: 3px solid white;
+            color: white;
+            padding: 12px;
+            margin-top: 12px;
+            border-radius: 50px;
+            font-size: 1.1em;
+            font-weight: 800;
+            cursor: pointer;
+            transition: background 0.2s, color 0.2s, transform 0.1s;
+            text-transform: lowercase;
+        }
+
+        .modal-btn:hover {
+            background-color: white;
+            color: #00b894;
+            transform: translateY(-2px);
+        }
+        .modal-btn:active { transform: translateY(0); }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            .server-row { flex-direction: column; align-items: flex-start; gap: 15px; }
+            .btn-jugar { width: 100%; }
+            .server-row-left { width: 100%; }
+            .modal-info-row { flex-direction: column; gap: 10px; }
+        }
+
+        /* Botón Refresh */
+        .refresh-btn {
+            position: fixed; bottom: 20px; right: 20px; width: 50px; height: 50px;
+            background-color: #444444; color: white; border: 2px solid #666666; border-radius: 50%;
+            font-size: 24px; cursor: pointer; display: flex; align-items: center; justify-content: center; z-index: 1000;
+        }
+        .refresh-btn.spinning { animation: spin 1s linear infinite; }
+        @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+        /* Iconos y Estilos Generales Restantes (Simplificados para el ejemplo) */
+        .seccion-iconos { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;}
+        .icono-circular { width: 100px; height: 100px; border-radius: 50%; border: 3px solid white; overflow: hidden; background: #000; }
+        .icono-circular img { width: 100%; height: 100%; object-fit: cover; }
+        .icono-texto { text-align: center; margin-top: 5px; font-weight: bold; }
+        .tabla-container { overflow-x: auto; margin-bottom: 20px; }
+        .tabla-apks { width: 100%; border-collapse: collapse; min-width: 500px; }
+        .tabla-apks th, .tabla-apks td { padding: 10px; text-align: left; border-bottom: 1px solid #555; }
+        .c-btn { border: 1px solid #ff4757; color: #ff4757; padding: 5px 10px; border-radius: 5px; }
+
+    </style>
+
+        /* ==========================================
            8. SECCIÓN ICONOS Y CREADORES
            ========================================== */
         .seccion-iconos {
@@ -870,6 +1087,211 @@
             </table>
         </div>
     </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+<div class="contenedor">
+        <h1 id="servidores">Lista de Servidores</h1>
+        
+        <div class="servers-grid" id="serversContainer">
+            </div>
+    </div>
+
+    <button class="refresh-btn" id="refreshBtn" title="Actualizar">↻</button>
+
+    <div id="serverModal" class="modal-overlay">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal()">&times;</span>
+            
+            <h2 id="modalTitle">Nombre del Server</h2>
+            
+            <div class="modal-info-row">
+                <div class="info-box">
+                    <span class="label">IP / Dirección</span>
+                    <span id="modalIp" class="value">...</span>
+                </div>
+                <div class="info-box">
+                    <span class="label">Puerto</span>
+                    <span id="modalPort" class="value">...</span>
+                </div>
+            </div>
+
+            <button class="modal-btn" id="btnCopyIp" onclick="copyFromModal('ip')">copiar ip</button>
+            <button class="modal-btn" id="btnCopyPort" onclick="copyFromModal('port')">copiar puerto</button>
+        </div>
+    </div>
+
+    <script>
+        // --- 1. CONFIGURACIÓN DE SERVIDORES ---
+        // ¡AQUÍ AGREGAS TUS SERVIDORES!
+        // Edita esta lista y aparecerán automáticamente en la página.
+        const servers = [
+            {
+                name: 'SuperLand',
+                address: 'SuperLandCity.ddns.net',
+                port: 25535,
+                type: 'bedrock'
+            },
+            {
+                name: 'GalaxyCraft',
+                address: 'GalaxyCraft.ddns.net',
+                port: 25567,
+                type: 'bedrock'
+            },
+            {
+                name: 'Del Main',
+                address: 'delmain.holynodes.com',
+                port: 25535,
+                type: 'bedrock'
+            },
+            {
+                name: 'Astral Pe',
+                address: 'play-astral.sytes.net',
+                port: 25788,
+                type: 'bedrock'
+            }
+            // Copia y pega un bloque {} para agregar otro servidor
+        ];
+
+        // --- 2. LÓGICA DEL MODAL ---
+        let currentServerData = {};
+
+        function openModal(name, ip, port) {
+            const modal = document.getElementById('serverModal');
+            document.getElementById('modalTitle').textContent = name;
+            document.getElementById('modalIp').textContent = ip;
+            document.getElementById('modalPort').textContent = port;
+            
+            currentServerData = { ip: ip, port: port };
+            modal.style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.getElementById('serverModal').style.display = 'none';
+        }
+
+        window.onclick = function(event) {
+            const modal = document.getElementById('serverModal');
+            if (event.target == modal) closeModal();
+        }
+
+        function copyFromModal(type) {
+            const text = type === 'ip' ? currentServerData.ip : currentServerData.port;
+            const btnId = type === 'ip' ? 'btnCopyIp' : 'btnCopyPort';
+            const btn = document.getElementById(btnId);
+            const originalText = btn.innerText;
+
+            navigator.clipboard.writeText(text).then(() => {
+                btn.innerText = "¡COPIADO!";
+                btn.style.backgroundColor = "white";
+                btn.style.color = "#00b894";
+                
+                setTimeout(() => {
+                    btn.innerText = originalText;
+                    btn.style.backgroundColor = "transparent";
+                    btn.style.color = "white";
+                }, 1500);
+            });
+        }
+
+        // --- 3. LÓGICA DE CARGA DE SERVIDORES ---
+        async function getServerStatus(server) {
+            try {
+                const endpoint = server.type === 'bedrock'
+                    ? `https://api.mcsrvstat.us/bedrock/3/${server.address}:${server.port}`
+                    : `https://api.mcsrvstat.us/3/${server.address}:${server.port}`;
+                const response = await fetch(endpoint);
+                return await response.json();
+            } catch (error) {
+                console.error(`Error:`, error);
+                return { online: false };
+            }
+        }
+
+        function createServerRow(server, status) {
+            const row = document.createElement('div');
+            row.className = 'server-row';
+            
+            const isOnline = status.online;
+            const icon = status.icon || 'assets/images/Icons/favicon.ico';
+            
+            row.innerHTML = `
+                <div class="server-row-left">
+                    <img src="${icon}" class="server-icon-small" onerror="this.src='https://via.placeholder.com/50'">
+                    <div class="server-info-text">
+                        <div class="server-name-row">${server.name}</div>
+                        <div class="server-status-row">
+                            <span class="dot ${isOnline ? 'online' : 'offline'}"></span>
+                            <span style="color: ${isOnline ? '#00b894' : '#ff4757'}">
+                                ${isOnline ? 'En Línea' : 'Offline'}
+                            </span>
+                            ${isOnline ? `<span style="color:#aaa; font-size:0.8em">(${status.players.online} jug.)</span>` : ''}
+                        </div>
+                    </div>
+                </div>
+                
+                <button class="btn-jugar" onclick="openModal('${server.name}', '${server.address}', '${server.port}')">
+                    JUGAR
+                </button>
+            `;
+            return row;
+        }
+
+        async function loadServers() {
+            const container = document.getElementById('serversContainer');
+            const refreshBtn = document.getElementById('refreshBtn');
+            
+            refreshBtn.classList.add('spinning');
+            container.innerHTML = ''; 
+
+            // Skeleton (Cargando...)
+            servers.forEach(() => {
+                const loadingRow = document.createElement('div');
+                loadingRow.className = 'server-row';
+                loadingRow.innerHTML = `
+                    <div class="server-row-left">
+                        <div style="width:50px; height:50px; background:#444; border-radius:8px;"></div>
+                        <div class="server-info-text">
+                            <span style="color:#aaa">Cargando...</span>
+                        </div>
+                    </div>
+                `;
+                container.appendChild(loadingRow);
+            });
+
+            // Carga real
+            for (let i = 0; i < servers.length; i++) {
+                const server = servers[i];
+                const status = await getServerStatus(server);
+                const row = createServerRow(server, status);
+                container.children[i].replaceWith(row);
+            }
+            refreshBtn.classList.remove('spinning');
+        }
+
+        document.getElementById('refreshBtn').addEventListener('click', loadServers);
+        loadServers();
+    </script>
+
+
+
+
+
+
+    
 
     <div class="contenedor">
         <h1 id="servidores" class="encabezado-principal">Lista de Servidores</h1>
@@ -1223,3 +1645,4 @@
     <a href="Política-de-Privacidad.html">Política de Privacidad</a>
 </body>
 </html>
+
