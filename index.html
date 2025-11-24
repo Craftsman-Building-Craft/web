@@ -139,32 +139,20 @@
 // ==================================================================== \\-->
 
 <div class="contenedor">
-        <h1 id="servidores" class="encabezado-principal">Lista de Servidores</h1>
+   <div class="server-table">
+    <h1 id="servidores" class="encabezado-principal">Lista de Servidores</h1>
 
-      <div class="server-status-widget">
-        <h2>🚀 Estado de Servidores</h2>
-        
-        <div class="controls">
-            <button id="refreshBtn">
-                <span class="refresh-icon">🔄</span> Refrescar
-            </button>
-        </div>
+    <div id="serversContainer" class="servers-grid"></div>
 
-        <div id="serversContainer">
-            </div>
-    </div>
+    <button id="refreshBtn">Actualizar</button>
 
-    <div id="serverModal" class="modal">
-        <div class="modal-content">
-            <span class="close-btn" onclick="closeModal()">&times;</span>
-            <h3 id="modalServerName"></h3>
-            <p>Conéctate a:</p>
-            <p>🌐 Dirección: <strong id="modalServerAddress"></strong></p>
-            <p>🚪 Puerto: <strong id="modalServerPort"></strong></p>
-            <button class="copy-btn" onclick="copyToClipboard('modalServerAddress')">Copiar Dirección</button>
-            <button class="copy-btn" onclick="copyToClipboard('modalServerPort')">Copiar Puerto</button>
-        </div>
-    </div>
+    <p id="reportText">
+        ¿Ves algún servidor caído o mostrando información incorrecta?  
+        <a href="https://tusitio.com/reportar" target="_blank">Reportar servidor</a>
+    </p>
+</div>
+
+  
 <br>
 
 <h1 id="Tutoriales" class="encabezado-principal">Tutoriales y Consejos</h1>
@@ -253,5 +241,6 @@
   -------------------------------------------------------------------------------------------------------------------------------------->
 </body>
 </html>
+
 
 
