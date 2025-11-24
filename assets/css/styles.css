@@ -22,7 +22,8 @@ box-sizing: border-box;
 body {
 font-family: Arial, sans-serif;
 background-attachment: fixed;
-background-image: url(assets/images/Fondo.png);
+background-image: url(../images/Fondo.png
+);
 background-repeat: no-repeat;
 background-size: cover;
 background-position: center center;
@@ -822,3 +823,4 @@ align-self: flex-start;
 margin-top: 10px;
 }
 }
+
