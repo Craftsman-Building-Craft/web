@@ -1,5 +1,5 @@
 // Variable 'creadores' corregida (es un array de objetos, NO un array de arrays)
-const creadores = [
+const creadores = 
   {
     nombre: "Astronauta29",
     imagen: "./assets/images/FotosdePerfil/astronauta29.jpg",
@@ -80,9 +80,9 @@ const creadores = [
     imagen: "./assets/images/FotosdePerfil/Darke_mc.jpg",
     link: "https://youtube.com/@darke_mc"
   }
-];
+;
 
-const creadores = [
+const creadores =
   {
     nombre: "Astronauta29",
     imagen: "./assets/images/FotosdePerfil/astronauta29.jpg",
