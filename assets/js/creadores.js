@@ -1,4 +1,5 @@
 const creadores = [
+ [
   {
     nombre: "Astronauta29",
     imagen: "./assets/images/FotosdePerfil/astronauta29.jpg",
@@ -25,7 +26,7 @@ const creadores = [
     link: "https://youtube.com/@thecraftinggamerz1137"
   },
   {
-    nombre: "Andres Games",
+    nombre: "Andrés Games",
     imagen: "./assets/images/FotosdePerfil/AndrésGames.jpg",
     link: "https://youtube.com/@andresuly"
   },
@@ -33,6 +34,51 @@ const creadores = [
     nombre: "Jahir YT",
     imagen: "./assets/images/FotosdePerfil/JahirYT.jpg",
     link: "https://youtube.com/@jahiryt"
+  },
+  {
+    nombre: "El Bore",
+    imagen: "./assets/images/FotosdePerfil/ElBore.jpg",
+    link: "https://youtube.com/@elborexd"
+  },
+  {
+    nombre: "SantiAlien 13",
+    imagen: "./assets/images/FotosdePerfil/SantiAlien13.jpg",
+    link: "https://youtube.com/@santialien13"
+  },
+  {
+    nombre: "Jenoob 17",
+    imagen: "./assets/images/FotosdePerfil/Jenoob17.jpg",
+    link: "https://youtube.com/@jenoob17"
+  },
+  {
+    nombre: "Samu King",
+    imagen: "./assets/images/FotosdePerfil/SamuKing.jpg",
+    link: "https://youtube.com/@samurobloxx"
+  },
+  {
+    nombre: "Imperio Craft",
+    imagen: "./assets/images/FotosdePerfil/ImperioCraft.jpg",
+    link: "https://youtube.com/@imperiocraft_yt"
+  },
+  {
+    nombre: "Miguelcrack",
+    imagen: "./assets/images/FotosdePerfil/MiguelCrack.jpg",
+    link: "https://www.youtube.com/@Miguelcrack230"
+  },
+  {
+    nombre: "Manuel Jr Navarro",
+    imagen: "./assets/images/FotosdePerfil/ManuelJrNavarro.jpg",
+    link: "https://www.youtube.com/@ManuelJrNavarro"
+  },
+  {
+    nombre: "Luicho Gamera",
+    imagen: "./assets/images/FotosdePerfil/LuichoGamera.jpg",
+    link: "https://youtube.com/@luichogamera"
+  },
+  {
+    nombre: "Darke_mc",
+    imagen: "./assets/images/FotosdePerfil/Darke_mc.jpg",
+    link: "https://youtube.com/@darke_mc"
   }
 ];
 
