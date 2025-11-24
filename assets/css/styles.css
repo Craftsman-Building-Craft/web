@@ -1,1085 +1,824 @@
-/* ======================================================== */
-/* 1. DIRECTIVAS FUNDAMENTALES (Agregadas) */
-/* ======================================================== */
-
-/* Define la codificación de caracteres. Debe ser la primera línea. */
-@charset "UTF-8";
-
-/* Si tuvieras que importar fuentes o archivos CSS externos, iría aquí.
-   Ejemplo: @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap'); */
-
-/* ======================================================== */
-/* 2. VARIABLES Y RESETS */
-/* ======================================================== */
-
+/* ==========================================
+1. DIRECTIVAS Y VARIABLES
+========================================== */
 :root {
-    /* Variables originales */
-    --color-dark: #110d1a;
-    --color-primary: #b197fc;
-    /* Color rojo principal para borde, texto y relleno */
-    --color-red-primary: #ff4757;
-    /* NUEVA VARIABLE: Color para los botones Verdes */
-    --color-green-primary: #00b894; /* Un verde vibrante (ej: verde menta) */
-
-    accent-color: var(--color-primary);
+--color-dark: #110d1a;
+--color-primary: #b197fc;
+--color-red-primary: #ff4757;
+--color-green-primary: #00b894;
+accent-color: var(--color-primary);
 }
-
-*,
-*::before,
-*::after {
-    /* Reset Global */
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+/* ==========================================
+2. RESETS
+========================================== */
+*, *::before, *::after {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
 }
-
-/* ======================================================== */
-/* 3. ESTILOS BASE Y TIPOGRAFÍA */
-/* ======================================================== */
-
+/* ==========================================
+3. ESTILOS BASE Y TIPOGRAFÍA
+========================================== */
 body {
-    font-family: Arial, sans-serif;
-    background-attachment: fixed;
-    
-    /* 🟢 RUTA CORREGIDA: Desde 'assets/css/styles.css' sube a 'assets/' (..), luego entra a 'images/'. */
-    background-image: url(Fondo.png); 
-    
-    background-repeat: no-repeat;
-    /* CENTRADO DE FONDO (Mejora: Asegurar que el fondo cubra) */
-    background-size: cover; 
-    background-position: center center;
-    color: #ffffff;
-    line-height: 1.6;
-    margin: 0;
-    padding: 20px;
+font-family: Arial, sans-serif;
+background-attachment: fixed;
+background-image: url(assets/images/Fondo.png);
+background-repeat: no-repeat;
+background-size: cover;
+background-position: center center;
+color: #ffffff;
+line-height: 1.6;
+margin: 0;
+padding: 20px;
 }
-
 h1 {
-    color: #ffffff;
-    border-bottom: 2px solid #aaaaaa;
-    padding-bottom: 10px;
-    margin-bottom: 20px;
-    text-align: center;
-}
+color: #ffffff;
+border-bottom: 2px solid #aaaaaa;
 
+padding-bottom: 10px;
+margin-bottom: 20px;
+text-align: center;
+}
 h2 {
-    color: #ffffff;
-    margin-top: 25px;
-    margin-bottom: 15px;
+color: #ffffff;
+margin-top: 25px;
+margin-bottom: 15px;
 }
-
 a {
-    color: #4da6ff;
-    text-decoration: none;
+color: #4da6ff;
+text-decoration: none;
 }
-
 a:hover {
-    text-decoration: underline;
+text-decoration: underline;
 }
-
-/* ======================================================== */
-/* 4. LAYOUTS Y ESTRUCTURA GENERAL */
-/* ======================================================== */
-
-.contenedor {
-    max-width: 1000px;
-    margin: 40px auto;
-    padding: 30px;
-    background-color: #00000063;
-    border: 1px solid #444444;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.fondo {
-    /* ESTILOS DE CENTRADO (si quieres centrar la página principal) */
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    /* ESTILOS ORIGINALES DE FONDO (mantienen el padding superior alto) */
-    padding: 80px 30px 30px 30px; /* top | right | bottom | left */
-}
-
-.apoyo {
-    margin-top: 30px;
-    padding: 15px;
-    background-color: #444444;
-    color: white;
-    border-top: 1px solid #666666;
-    text-align: center;
-    font-style: italic;
-}
-
-/* --- LISTAS --- */
-
 ul {
-    list-style-type: none;
-    padding: 0;
+list-style-type: none;
+padding: 0;
 }
-
 li {
-    background-color: #333333;
-    color: white;
-    padding: 10px 15px;
-    margin-bottom: 8px;
-    border-left: 5px solid #666666;
+background-color: #333333;
+color: white;
+padding: 10px 15px;
+margin-bottom: 8px;
+border-left: 5px solid #666666;
 }
+/* ==========================================
+4. LAYOUTS Y ESTRUCTURA
+========================================== */
+.contenedor {
+max-width: 1000px;
+margin: 40px auto;
+padding: 30px;
+background-color: #00000063;
+border: 1px solid #444444;
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.fondo {
+min-height: 100vh;
+display: flex;
 
-
-/* ======================================================== */
-/* 5. FORMULARIOS Y CONTROLES (Buscador y Botones) */
-/* ======================================================== */
-
+flex-direction: column;
+justify-content: center;
+align-items: center;
+padding: 80px 30px 30px 30px;
+}
+.apoyo {
+margin-top: 30px;
+padding: 15px;
+background-color: #444444;
+color: white;
+border-top: 1px solid #666666;
+text-align: center;
+font-style: italic;
+}
+/* ==========================================
+5. FORMULARIOS Y BOTONES
+========================================== */
 .controles {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 20px;
-    flex-wrap: wrap;
+display: flex;
+gap: 10px;
+margin-bottom: 20px;
+flex-wrap: wrap;
 }
-
 .buscador {
-    display: flex;
-    gap: 10px;
-    flex: 1;
-    min-width: 300px;
+display: flex;
+gap: 10px;
+flex: 1;
+min-width: 300px;
 }
-
 input[type="text"] {
-    flex: 1;
-    padding: 12px 20px;
-    border: 2px solid #777777;
-    border-radius: 8px;
-    font-size: 16px;
-    transition: all 0.3s;
-    color: white;
-    background-color: #555555;
+flex: 1;
+padding: 12px 20px;
+border: 2px solid #777777;
+border-radius: 8px;
+font-size: 16px;
+transition: all 0.3s;
+color: white;
+background-color: #555555;
 }
-
 input[type="text"]:focus {
-    outline: none;
-    border-color: #999999;
-    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.1);
-}
+outline: none;
+border-color: #999999;
+box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.1);
 
+}
 button {
-    padding: 12px 25px;
-    background: #777777;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 16px;
-    font-weight: 600;
-    transition: all 0.3s;
+padding: 12px 25px;
+background: #777777;
+color: white;
+border: none;
+border-radius: 8px;
+cursor: pointer;
+font-size: 16px;
+font-weight: 600;
+transition: all 0.3s;
 }
-
 button:hover {
-    background: #999999;
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+background: #999999;
+transform: translateY(-2px);
+box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
-
 button:active {
-    transform: translateY(0);
+transform: translateY(0);
 }
-
-/* --- ESTILOS DE BOTONES C-BTN --- */
+/* Botones MEGA (C-BTN) */
 .c-btn {
-    position: relative;
-    overflow: hidden;
-    padding: 0.85rem 2rem;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--color-red-primary);
-    text-decoration: none;
-    border-radius: 8px;
-    background-color: transparent;
-    backface-visibility: hidden;
-    box-shadow: inset 0 0 0 1px var(--color-red-primary);
-    transform: translateZ(0);
+position: relative;
+overflow: hidden;
+padding: 0.85rem 2rem;
+display: inline-flex;
+align-items: center;
+justify-content: center;
+color: var(--color-red-primary);
+text-decoration: none;
+border-radius: 8px;
+background-color: transparent;
+backface-visibility: hidden;
+box-shadow: inset 0 0 0 1px var(--color-red-primary);
+transform: translateZ(0);
 }
-
 .c-btn::after {
-    content: "";
-    pointer-events: none;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 1;
-    height: 120%;
-    width: 120%;
-    border-radius: 20%;
-    background-color: var(--color-red-primary);
-    scale: 0 0;
-    translate: 0 140%;
-    transition: scale 0.6s cubic-bezier(0.215, 0.61, 0.355, 1),
-        translate 0.4s cubic-bezier(0.215, 0.61, 0.355, 1);
-}
+content: "";
+pointer-events: none;
+position: absolute;
+top: 0;
+left: 0;
+z-index: 1;
 
+height: 120%;
+width: 120%;
+border-radius: 20%;
+background-color: var(--color-red-primary);
+scale: 0 0;
+translate: 0 140%;
+transition: scale 0.6s cubic-bezier(0.215, 0.61, 0.355, 1), translate 0.4s
+cubic-bezier(0.215, 0.61, 0.355, 1);
+}
 .c-btn__label {
-    display: inline-flex;
-    align-items: center;
-    gap: 1rem;
-    z-index: 2;
-    font-size: 1.2rem;
-    letter-spacing: 0.025em;
-    transition: color 0.32s ease-in-out;
+display: inline-flex;
+align-items: center;
+gap: 1rem;
+z-index: 2;
+font-size: 1.2rem;
+letter-spacing: 0.025em;
+transition: color 0.32s ease-in-out;
 }
-
 .c-btn:hover span {
-    color: var(--color-dark);
+color: var(--color-dark);
 }
-
 .c-btn:hover::after {
-    scale: 1.5 1.5;
-    translate: 0 0;
-    border-radius: 50%;
+scale: 1.5 1.5;
+translate: 0 0;
+border-radius: 50%;
 }
-
-/* Modificador para el Botón Verde */
-.c-btn--green {
-    color: var(--color-green-primary);
-    box-shadow: inset 0 0 0 1px var(--color-green-primary);
-}
-
-.c-btn--green::after {
-    background-color: var(--color-green-primary);
-}
-
-.boton-ver-imagen {
-    display: flex; /* Permite alinear el ícono y el texto */
-    align-items: center;
-    gap: 8px; /* Espacio entre el ícono y el texto */
-    padding: 10px 15px;
-    border: none;
-    cursor: pointer;
-}
-.icono-boton {
-    width: 20px; /* Define el tamaño del ícono */
-    height: 20px;
-}
-
-
-/* ======================================================== */
-/* 6. ESTILOS DE TABLAS */
-/* ======================================================== */
-
+/* ==========================================
+6. TABLAS
+========================================== */
 .tabla-container {
-    overflow-x: auto;
-    width: 100%;
-    -webkit-overflow-scrolling: touch; /* Mejor desplazamiento en iOS */
-    margin-bottom: 20px;
+overflow-x: auto;
+width: 100%;
+-webkit-overflow-scrolling: touch;
+margin-bottom: 20px;
 }
-
 .encabezado-principal {
-    background: linear-gradient(135deg, #000000 0%, #222222 100%);
-    color: white;
-    padding: 20px;
-    font-size: 1.5em;
-    text-align: center;
+background: linear-gradient(135deg, #000000 0%, #222222 100%);
+color: white;
+padding: 20px;
+font-size: 1.5em;
+text-align: center;
 }
 
 table {
-    width: 100%;
-    border-collapse: collapse;
+width: 100%;
+border-collapse: collapse;
 }
-
-th,
-td {
-    border: none;
-    padding: 10px;
-    text-align: left;
-    color: white;
+th, td {
+border: none;
+padding: 10px;
+text-align: left;
+color: white;
 }
-
-/* Borde inferior para celdas de tabla general */
 tbody td {
-    border-bottom: 1px solid #777777;
+border-bottom: 1px solid #777777;
 }
-
 thead th {
-    border-bottom: 3px solid #666666;
-    background-color: #444444;
+border-bottom: 3px solid #666666;
+background-color: #444444;
+color: white;
+position: relative;
+cursor: pointer;
 }
-
-/* --- Estilos de tabla APKS (Tabla de Descargas) --- */
+thead th:hover {
+background: #555555;
+}
+/* Estilos Tabla APKS */
 .tabla-apks {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-    /* Agregado para el responsive */
-    min-width: 650px;
+width: 100%;
+border-collapse: collapse;
+margin-top: 20px;
+min-width: 650px;
 }
 .tabla-apks td, .tabla-apks th {
-    padding: 8px 5px; /* Padding reducido para ahorrar espacio */
-    font-size: 0.9em;
-    white-space: nowrap; /* Evita que el texto de las celdas se rompa */
+padding: 8px 5px;
+font-size: 0.9em;
+white-space: nowrap;
 }
-.tabla-apks .c-btn {
-    display: block;
-    padding: 5px;
-    margin: 2px 0;
-    font-size: 0.8em;
-}
-
-thead th {
-    color: white;
-    position: relative; /* Para el icono de ordenación */
-    cursor: pointer; /* Indica que es clickeable */
-}
-
-thead th:hover {
-    background: #555555;
-    color: white;
-}
-
-thead th::after {
-    content: '⇅';
-    position: absolute;
-    right: 10px;
-    color: #999;
-    font-size: 0.8em;
-}
-
-thead th.asc::after {
-    content: '↑';
-    color: #ffffff;
-}
-
-thead th.desc::after {
-    content: '↓';
-    color: #ffffff;
-}
-
 tbody tr {
-    border-bottom: 1px solid #eee;
-    transition: all 0.3s;
-    color: white;
+transition: all 0.3s;
+color: white;
 }
-
 tbody tr:hover {
-    background: #666666;
-    transform: scale(1.01);
-}
 
+background: #666666;
+transform: scale(1.01);
+}
 .no-resultados {
-    text-align: center;
-    padding: 40px;
-    color: #ffffff;
-    font-size: 1.1em;
+text-align: center;
+padding: 40px;
+color: #ffffff;
+font-size: 1.1em;
 }
-
 .pequeño {
-    font-size: 10px;
-    text-align: right;
+font-size: 10px;
+text-align: right;
 }
-
-.tabla-apks th:nth-child(2),
-.tabla-apks td:nth-child(2) {
-    width: 80px;
-    min-width: 80px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
-.tabla-apks th:nth-child(3),
-.tabla-apks td:nth-child(3) {
-    width: 300px;
-    min-width: 300px;
-}
-
-
-/* --- ESTILOS DE LA TABLA SERVIDORES (Antigua) --- */
-/* (Reemplazada en gran parte por .servers-grid, pero mantenida) */
-
-.tabla-server {
-    width: 100%;
-    margin: 0 auto;
-}
-
-.tabla-server tbody td {
-    border-bottom: none;
-}
-
-.version-servidor {
-    font-size: 0.85em;
-    color: #888;
-    margin-left: 8px;
-    display: block;
-}
-
-.celda-ip-puerto {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    flex-wrap: nowrap;
-}
-
-.boton-copiar {
-    padding: 3px 8px;
-    border: 1px solid #888888;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 0.85em;
-    white-space: nowrap;
-    color: #333333;
-    background-color: #aaaaaa;
-}
-
-.separador-servidor {
-    height: 15px;
-}
-
-.separador-servidor td {
-    border: none;
-    padding: 0;
-}
-
-.separador-servidor td:first-child {
-    border-top: 2px solid #ccc;
-}
-
-
-/* ======================================================== */
-/* 7. TARJETAS DE ESTADO DE SERVIDOR (Server-Card) */
-/* ======================================================== */
-
+/* ==========================================
+7. TARJETAS DE SERVIDOR (Server Cards)
+========================================== */
 .servers-grid {
-    display: flex; /* Por defecto se apila en móvil */
-    flex-direction: column;
-    gap: 25px;
-    margin-bottom: 30px;
-    margin-top: 20px;
+display: flex;
+flex-direction: column;
+gap: 25px;
+margin-bottom: 30px;
+margin-top: 20px;
 }
-
 .server-card {
-    background-color: #00000063;
-    border: 1px solid #444444;
-    border-radius: 15px;
-    padding: 25px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
-    transition: transform 0.3s, box-shadow 0.3s;
-    color: white;
-    overflow: hidden;
+background-color: #00000063;
+border: 1px solid #444444;
+border-radius: 15px;
+padding: 25px;
+box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+transition: transform 0.3s, box-shadow 0.3s;
+color: white;
+overflow: hidden;
 }
-
 .server-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.7);
+transform: translateY(-5px);
+box-shadow: 0 8px 25px rgba(0, 0, 0, 0.7);
 }
-
 .server-header {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    margin-bottom: 20px;
-    padding-bottom: 15px;
-    border-bottom: 2px solid #555555;
-}
+display: flex;
+align-items: center;
+gap: 15px;
+margin-bottom: 20px;
 
+padding-bottom: 15px;
+border-bottom: 2px solid #555555;
+}
 .server-icon {
-    width: 64px;
-    height: 64px;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
-    flex-shrink: 0;
+width: 64px;
+height: 64px;
+border-radius: 8px;
+box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+flex-shrink: 0;
 }
-
-.server-title {
-    flex: 1;
-    min-width: 0;
-}
-
 .server-name {
-    font-size: 1.5em;
-    font-weight: bold;
-    color: #ffffff;
-    margin-bottom: 5px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+font-size: 1.5em;
+font-weight: bold;
+color: #ffffff;
+white-space: nowrap;
+overflow: hidden;
+text-overflow: ellipsis;
 }
-
 .server-address {
-    color: #cccccc;
-    font-size: 0.9em;
-    font-family: 'Courier New', monospace;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+color: #cccccc;
+font-size: 0.9em;
+font-family: 'Courier New', monospace;
+white-space: nowrap;
+overflow: hidden;
+text-overflow: ellipsis;
 }
-
 .status-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 8px 16px;
-    border-radius: 20px;
-    font-weight: bold;
-    font-size: 0.9em;
-    color: black;
-    text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.2);
-    white-space: nowrap;
+display: inline-flex;
+align-items: center;
+gap: 8px;
+padding: 8px 16px;
+border-radius: 20px;
+font-weight: bold;
+font-size: 0.9em;
+color: black;
+text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.2);
+white-space: nowrap;
 }
-
 .status-online {
-    background: linear-gradient(135deg, #008800 0%, #33cc33 100%);
-    color: white;
+background: linear-gradient(135deg, #008800 0%, #33cc33 100%);
+color: white;
 }
 
 .status-offline {
-    background: linear-gradient(135deg, #cc0000 0%, #ff4757 100%);
-    color: white;
+background: linear-gradient(135deg, #cc0000 0%, #ff4757 100%);
+color: white;
 }
-
-.status-loading {
-    background: linear-gradient(135deg, #555555 0%, #888888 100%);
-    color: white;
-}
-
 .status-indicator {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background: white;
+width: 10px;
+height: 10px;
+background-color: white;
+border-radius: 50%;
+display: inline-block;
 }
-
-.status-online .status-indicator,
-.status-loading .status-indicator {
-    animation: mc-status-pulse 2s infinite;
+.status-online .status-indicator {
+animation: mc-status-pulse 2s infinite;
 }
-
 @keyframes mc-status-pulse {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.5; }
+0%, 100% { opacity: 1; }
+50% { opacity: 0.5; }
 }
-
 .version-badge {
-    display: inline-block;
-    background: #666666;
-    color: white;
-    padding: 4px 10px;
-    border-radius: 12px;
-    font-size: 0.75em;
-    margin-left: 8px;
-    vertical-align: middle;
+display: inline-block;
+background: #666666;
+color: white;
+padding: 4px 10px;
+border-radius: 12px;
+font-size: 0.75em;
+margin-left: 8px;
+vertical-align: middle;
 }
-
 .server-stats {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 15px;
-    margin: 20px 0;
+display: grid;
+grid-template-columns: repeat(2, 1fr);
+gap: 15px;
+margin: 20px 0;
 }
-
 .stat-box {
-    background: #333333;
-    padding: 15px;
-    border-radius: 10px;
-    text-align: center;
-    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.5);
-}
-
-.stat-label {
-    font-size: 0.85em;
-    color: #aaaaaa;
-    margin-bottom: 5px;
-    text-transform: uppercase;
-    font-weight: 600;
+background: #333333;
+padding: 15px;
+border-radius: 10px;
+text-align: center;
+box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.5);
 }
 
 .stat-value {
-    font-size: 1.8em;
-    font-weight: bold;
-    color: #ffffff;
+font-size: 1.8em;
+font-weight: bold;
+color: #ffffff;
 }
-
-.motd {
-    background: #222222;
-    padding: 15px;
-    border-radius: 8px;
-    margin: 15px 0;
-    font-family: 'Courier New', monospace;
-    font-size: 0.9em;
-    line-height: 1.6;
-    color: #eeeeee;
-    border-left: 4px solid #4da6ff;
-    white-space: pre-wrap;
-}
-
 .copy-section {
-    display: flex;
-    gap: 10px;
-    margin-top: 15px;
+display: flex;
+gap: 10px;
+margin-top: 15px;
 }
-
 .copy-input {
-    flex: 1;
-    padding: 10px;
-    border: 2px solid #555555;
-    border-radius: 8px;
-    font-family: 'Courier New', monospace;
-    font-size: 0.9em;
-    color: #eeeeee;
-    background-color: #333333;
+flex: 1;
+padding: 10px;
+border: 2px solid #555555;
+border-radius: 8px;
+font-family: 'Courier New', monospace;
+font-size: 0.9em;
+color: #eeeeee;
+background-color: #333333;
 }
-
 .copy-btn {
-    padding: 10px 20px;
-    background: #4da6ff;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    font-weight: bold;
-    transition: all 0.3s;
-    font-size: 0.9em;
+padding: 10px 20px;
+font-size: 0.9em;
 }
-
 .copy-btn:hover {
-    background: #6ab0fa;
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+background: #6ab0fa;
+transform: translateY(-2px);
 }
-
 .copy-btn.copied {
-    background: #008800;
+background: #008800;
 }
-
 .players-list {
-    margin-top: 15px;
+margin-top: 15px;
 }
-
 .players-header {
-    font-weight: bold;
-    color: #ffffff;
-    margin-bottom: 10px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
+font-weight: bold;
+color: #ffffff;
+margin-bottom: 10px;
 }
-
 .player-tag {
-    display: inline-block;
-    background: #444444;
-    color: #ffffff;
-    padding: 5px 12px;
-    border-radius: 15px;
-    margin: 3px;
-    font-size: 0.85em;
-}
 
-.error-message {
-    background: #332222;
-    border: 1px solid #ff4757;
-    border-radius: 8px;
-    padding: 12px;
-    color: #ffaaaa;
-    margin-top: 10px;
-    font-size: 0.9em;
-    text-align: center;
+display: inline-block;
+background: #444444;
+color: #ffffff;
+padding: 5px 12px;
+border-radius: 15px;
+margin: 3px;
+font-size: 0.85em;
 }
-
+/* Botón Refresh Flotante */
 .refresh-btn {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    width: 50px;
-    height: 50px;
-    background-color: #444444;
-    color: white;
-    border: 2px solid #666666;
-    border-radius: 50%;
-    font-size: 24px;
-    cursor: pointer;
-    transition: all 0.3s;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 1000;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+position: fixed;
+bottom: 20px;
+right: 20px;
+width: 50px;
+height: 50px;
+background-color: #444444;
+color: white;
+border: 2px solid #666666;
+border-radius: 50%;
+font-size: 24px;
+cursor: pointer;
+transition: all 0.3s;
+display: flex;
+align-items: center;
+justify-content: center;
+z-index: 1000;
+box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
-
 .refresh-btn:hover {
-    background-color: #555555;
-    transform: scale(1.1);
+background-color: #555555;
+transform: scale(1.1);
 }
-
 .refresh-btn.spinning {
-    animation: spin 1s linear infinite;
+animation: spin 1s linear infinite;
 }
-
 @keyframes spin {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
+from { transform: rotate(0deg); }
+to { transform: rotate(360deg); }
 }
-
-/* --- ESTILO PARA EL BOTÓN "AÑADIR TU SERVIDOR" --- */
 .añadir-tu-servidor {
-    background-color: #00000063;
-    border: 1px solid #444444;
-    border-radius: 15px;
-    padding: 25px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
-    color: #ffffff;
-    text-align: center;
-    margin-top: 25px;
-    font-size: 1.1em;
-    font-weight: 600;
-    line-height: 1.6;
-    cursor: pointer;
-    transition: transform 0.3s, box-shadow 0.3s;
-}
+text-align: center;
+margin-top: 30px;
+padding: 20px;
 
+background-color: #333333;
+border: 2px dashed #555555;
+border-radius: 10px;
+color: #cccccc;
+font-size: 1.1em;
+font-weight: 600;
+}
 .añadir-tu-servidor:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.7);
-    border-color: #666666;
+transform: translateY(-5px);
+box-shadow: 0 8px 25px rgba(0, 0, 0, 0.7);
+border-color: #666666;
+}
+/* ==========================================
+7. LISTA DE SERVIDORES (ESTILO LINEAL)
+========================================== */
+.servers-grid {
+display: flex;
+flex-direction: column; /* Lista vertical */
+gap: 15px;
+margin-bottom: 30px;
+margin-top: 20px;
+}
+/* Fila del Servidor */
+.server-row {
+display: flex;
+align-items: center;
+justify-content: space-between;
+background-color: #00000063;
+border: 1px solid #444444;
+border-radius: 10px;
+padding: 15px 20px;
+transition: transform 0.2s, background 0.2s;
+}
+.server-row:hover {
+background-color: #00000099;
+transform: translateX(5px);
+border-color: #666666;
+}
+.server-row-left {
+display: flex;
+align-items: center;
+gap: 15px;
 }
 
-/* ======================================================== */
-/* 8. CARRUSEL Y ELEMENTOS INTERACTIVOS */
-/* ======================================================== */
-
-/* Oculta la fila del carrusel por defecto */
-.fila-carrusel {
-    display: none;
+.server-icon-small {
+width: 50px;
+height: 50px;
+border-radius: 8px;
+object-fit: cover;
 }
-
-.celda-carrusel {
-    padding: 0;
-    border: none;
+.server-info-text {
+display: flex;
+flex-direction: column;
 }
-
-.carrusel {
-    position: relative;
-    width: 100%;
-    overflow: hidden;
-    margin: 0;
+.server-name-row {
+font-size: 1.2em;
+font-weight: bold;
+color: white;
 }
-
-.imagen-carrusel {
-    width: 100%;
-    height: auto;
-    display: block;
-    flex-shrink: 0;
+.server-status-row {
+font-size: 0.9em;
+display: flex;
+align-items: center;
+gap: 8px;
 }
-
-.imagen-carrusel:not(.active) {
-    display: none;
+.dot {
+width: 10px;
+height: 10px;
+border-radius: 50%;
+display: inline-block;
 }
+.dot.online { background-color: #00b894; box-shadow: 0 0 5px #00b894; }
+.dot.offline { background-color: #ff4757; }
+/* Botón Jugar */
+.btn-jugar {
+background-color: #00b894;
+color: white;
+padding: 10px 25px;
+border: none;
+border-radius: 25px;
+font-weight: bold;
+cursor: pointer;
+text-transform: uppercase;
+letter-spacing: 1px;
+transition: all 0.3s;
+box-shadow: 0 4px 10px rgba(0, 184, 148, 0.3);
 
-.carrusel-prev,
-.carrusel-next {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: rgba(0, 0, 0, 0.6);
-    color: white;
-    border: none;
-    padding: 10px 15px;
-    cursor: pointer;
-    font-size: 1.5em;
-    font-weight: bold;
-    z-index: 10;
-    user-select: none;
-    transition: background-color 0.3s;
 }
-
-.carrusel-prev {
-    left: 0;
-    border-radius: 0 5px 5px 0;
+.btn-jugar:hover {
+background-color: #00a383;
+transform: scale(1.05);
+box-shadow: 0 6px 15px rgba(0, 184, 148, 0.5);
 }
-
-.carrusel-next {
-    right: 0;
-    border-radius: 5px 0 0 5px;
+/* --- VENTANA MODAL (POPUP) --- */
+.modal-overlay {
+display: none;
+position: fixed;
+z-index: 2000;
+left: 0;
+top: 0;
+width: 100%;
+height: 100%;
+background-color: rgba(0, 0, 0, 0.85);
+backdrop-filter: blur(4px);
+justify-content: center;
+align-items: center;
 }
-
-.carrusel-prev:hover,
-.carrusel-next:hover {
-    background-color: rgba(0, 0, 0, 0.9);
+.modal-content {
+background: linear-gradient(135deg, #55efc4 0%, #00b894 100%);
+padding: 35px;
+border-radius: 15px;
+width: 90%;
+max-width: 450px;
+text-align: center;
+position: relative;
+box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
+border: 4px solid white;
+animation: popup 0.3s ease-out;
 }
-
-/* --- ESTILOS PARA CARRUSEL OCULTO (SI SE USA) --- */
-.carrusel-oculto {
-    max-height: 0;
-    opacity: 0;
-    overflow: hidden;
-    transition: max-height 0.8s ease-in-out, opacity 0.6s ease-in-out;
-    margin: 0 auto;
-    width: 100%;
+@keyframes popup {
+from { transform: scale(0.7); opacity: 0; }
+to { transform: scale(1); opacity: 1; }
 }
+.close-modal {
+position: absolute;
+top: 10px;
+right: 15px;
+color: white;
+font-size: 30px;
+font-weight: bold;
 
-.carrusel-visible {
-    max-height: 1000px;
-    opacity: 1;
-    margin-top: 40px;
-    margin-bottom: 40px;
+cursor: pointer;
+line-height: 20px;
+text-shadow: 0 2px 4px rgba(0,0,0,0.2);
 }
-
-.carrusel .imagen-carrusel {
-    max-height: 500px;
-    width: 100%;
-    object-fit: contain;
+.modal-content h2 {
+color: white;
+text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+margin-bottom: 25px;
+font-size: 2em;
+border-bottom: 2px solid rgba(255,255,255,0.5);
+padding-bottom: 10px;
 }
-
-
-/* ======================================================== */
-/* 9. SECCIONES TEMÁTICAS (Creadores, Iconos) */
-/* ======================================================== */
-
-/* --- ESTILOS DE CREADORES --- */
-
-.grid-creadores {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    max-width: 900px;
-    margin: 40px auto;
-    gap: 20px;
+.modal-info-row {
+display: flex;
+gap: 15px;
+margin-bottom: 25px;
 }
-
-.tarjeta-creador {
-    width: 250px;
-    padding: 15px;
-    background-color: #444444;
-    border: 1px solid #666666;
-    border-radius: 8px;
-    text-align: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    transition: transform 0.2s;
-    color: white;
+.info-box {
+flex: 1;
+background: rgba(255, 255, 255, 0.25);
+padding: 15px;
+border: 2px solid white;
+border-radius: 10px;
+color: white;
+display: flex;
+flex-direction: column;
+align-items: center;
 }
+.info-box .label { font-size: 0.85em; text-transform: uppercase; font-weight: 600; opacity:
+0.95; margin-bottom: 5px;}
+.info-box .value { font-weight: bold; font-family: 'Courier New', monospace; font-size:
+1.2em; text-shadow: 0 1px 2px rgba(0,0,0,0.1);}
+.modal-btn {
+display: block;
+width: 100%;
+background-color: transparent;
+border: 3px solid white;
+color: white;
+padding: 12px;
+margin-top: 12px;
+border-radius: 50px;
+font-size: 1.1em;
+font-weight: 800;
 
-.tarjeta-creador:hover {
-    transform: translateY(-5px);
+cursor: pointer;
+transition: background 0.2s, color 0.2s, transform 0.1s;
+text-transform: lowercase;
 }
-
-.perfil-foto {
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
-    object-fit: cover;
-    margin-bottom: 10px;
-    border: 4px solid #ff0000;
+.modal-btn:hover {
+background-color: white;
+color: #00b894;
+transform: translateY(-2px);
 }
-
-.nombre-creador {
-    font-size: 1.1em;
-    font-weight: bold;
-    color: #ffffff;
-    margin: 5px 0 15px 0;
-}
-
-.boton-canal {
-    display: inline-block;
-    padding: 8px 15px;
-    background-color: #ff0000;
-    color: white !important;
-    text-decoration: none;
-    border-radius: 4px;
-    font-weight: 600;
-    transition: background-color 0.3s;
-}
-
-.boton-canal:hover {
-    background-color: #470000;
-}
-
-/* --- ESTILOS DE CENTRADO DE ICONOS --- */
-
-.wave-container {
-    text-align: center;
-    margin-bottom: 40px; /* Separa la palabra de los círculos */
-}
-
-.seccion-iconos {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 40px; /* Espacio entre los círculos */
-}
-
-.icono-link {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-decoration: none;
-    color: inherit;
-    transition: transform 0.3s ease;
-}
-
-.icono-link:hover {
-    transform: translateY(-10px);
-}
-
-.icono-circular {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    border: 3px solid #ffffff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-    box-shadow: 0 0 15px rgba(0, 150, 255, 0.5);
-}
-
-.icono-circular img {
-    max-width: 90%;
-    max-height: 90%;
-    object-fit: contain;
-    filter: drop-shadow(0 0 5px rgba(0,0,0,0.5));
-}
-
-.icono-texto {
-    margin-top: 15px;
-    font-size: 1.2em;
-    font-weight: bold;
-    color: #ffffff;
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
-}
-
-/* --- ESTILOS DE ANIMACIÓN WAVE --- */
-
-@keyframes wave {
-    0%, 100% {
-        transform: translateY(0);
-    }
-    50% {
-        transform: translateY(-20px);
-    }
-}
-
-.wave-text span {
-    display: inline-block;
-    font-size: 4rem;
-    animation: wave 2s ease-in-out infinite;
-}
-
-.wave-text span:nth-child(1) { animation-delay: 0s; }
-.wave-text span:nth-child(2) { animation-delay: 0.05s; }
-.wave-text span:nth-child(3) { animation-delay: 0.1s; }
-.wave-text span:nth-child(4) { animation-delay: 0.15s; }
-.wave-text span:nth-child(5) { animation-delay: 0.2s; }
-.wave-text span:nth-child(6) { animation-delay: 0.25s; }
-.wave-text span:nth-child(7) { animation-delay: 0.3s; }
-.wave-text span:nth-child(8) { animation-delay: 0.35s; }
-.wave-text span:nth-child(9) { animation-delay: 0.4s; }
-.wave-text span:nth-child(10) { animation-delay: 0.45s; }
-.wave-text span:nth-child(11) { animation-delay: 0.5s; }
-
-
-/* ======================================================== */
-/* 10. MEDIA QUERIES (Responsividad) */
-/* ======================================================== */
-
-/* Media Query para Tabletas y Escritorio (Anchos grandes) */
-@media (min-width: 768px) {
-
-    /* Revierte el comportamiento de scroll de la tabla para PC */
-    .tabla-container {
-        overflow-x: hidden;
-    }
-
-    .tabla-apks {
-        min-width: auto; /* Permite que el ancho se ajuste al contenedor */
-        width: 100%;
-    }
-
-    /* Revierte el estilo de los botones para PC (vuelven a estar en línea) */
-    .tabla-apks .c-btn {
-        display: inline-block;
-        padding: 5px 10px;
-        margin: 0;
-    }
-
-    /* Revierte la disposición de los controles a horizontal */
-    .controles {
-        flex-direction: row;
-        justify-content: space-between;
-    }
-
-    /* Vuelve a mostrar las tarjetas de servidor en cuadrícula */
-    .servers-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-        gap: 20px;
-    }
-
-    .server-stats {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-/* Media Query general para móvil (Ancho menor o igual a 768px) */
-@media (max-width: 768px) {
-    .controles {
-        flex-direction: column;
-    }
-
-    .buscador {
-        min-width: 100%;
-    }
-
-    thead th::after {
-        position: static;
-        margin-left: 5px;
-    }
-
-    /* Ajuste para tarjetas de servidor en móviles */
-    .server-stats {
-        grid-template-columns: 1fr;
-    }
-
-    .server-header {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    .status-badge {
-        align-self: flex-start;
-        margin-top: 10px;
-    }
-
-    /* Ajuste para la cuadrícula de servidores en móvil */
-    .servers-grid {
-        flex-direction: column;
-        gap: 20px;
-    }
-}
-
-
+.modal-btn:active { transform: translateY(0); }
+/* Responsive */
 @media (max-width: 600px) {
-    .seccion-iconos {
-        gap: 20px;
-    }
+.server-row { flex-direction: column; align-items: flex-start; gap: 15px; }
+.btn-jugar { width: 100%; }
+.server-row-left { width: 100%; }
+.modal-info-row { flex-direction: column; gap: 10px; }
+}
+/* Botón Refresh */
+.refresh-btn {
+position: fixed; bottom: 20px; right: 20px; width: 50px; height: 50px;
+background-color: #444444; color: white; border: 2px solid #666666; border-radius:
+50%;
+font-size: 24px; cursor: pointer; display: flex; align-items: center; justify-content:
+center; z-index: 1000;
+}
+.refresh-btn.spinning { animation: spin 1s linear infinite; }
+@keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+/* Iconos y Estilos Generales Restantes (Simplificados para el ejemplo) */
+.seccion-iconos { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;}
+.icono-circular { width: 100px; height: 100px; border-radius: 50%; border: 3px solid
+white; overflow: hidden;}
+.icono-circular img { width: 100%; height: 100%; object-fit: cover; }
+.icono-texto { text-align: center; margin-top: 5px; font-weight: bold; }
+.tabla-container { overflow-x: auto; margin-bottom: 20px; }
+.tabla-apks { width: 100%; border-collapse: collapse; min-width: 500px; }
+.tabla-apks th, .tabla-apks td { padding: 10px; text-align: left; border-bottom: 1px solid
+#555; }
+.c-btn { border: 1px solid #ff4757; color: #ff4757; padding: 5px 10px; border-radius: 5px;
+}
+/* ==========================================
+8. SECCIÓN ICONOS Y CREADORES
 
-    .icono-circular {
-        width: 100px;
-        height: 100px;
-    }
+========================================== */
+.seccion-iconos {
+display: flex;
+justify-content: center;
+flex-wrap: wrap;
+gap: 40px;
+}
+.icono-link {
+display: flex;
+flex-direction: column;
+align-items: center;
+}
+.icono-circular {
+width: 150px;
+height: 150px;
+border-radius: 50%;
+border: 3px solid #ffffff;
+display: flex;
+justify-content: center;
+align-items: center;
+overflow: hidden;
+box-shadow: 0 0 15px rgba(0, 150, 255, 0.5);
+}
+.icono-circular img {
+max-width: 90%;
+max-height: 90%;
+object-fit: contain;
+filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.5));
+}
+.icono-texto {
+margin-top: 15px;
+font-size: 1.2em;
+font-weight: bold;
+color: #ffffff;
+text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+}
+/* Creadores Grid */
+.grid-creadores {
+display: flex;
+flex-wrap: wrap;
+justify-content: space-around;
+max-width: 900px;
+margin: 40px auto;
 
-    .icono-texto {
-        font-size: 1em;
-    }
+gap: 20px;
+}
+.tarjeta-creador {
+width: 250px;
+padding: 15px;
+background-color: #444444;
+border: 1px solid #666666;
+border-radius: 8px;
+text-align: center;
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+transition: transform 0.2s;
+color: white;
+}
+.tarjeta-creador:hover {
+transform: translateY(-5px);
+}
+.perfil-foto {
+width: 100px;
+height: 100px;
+border-radius: 50%;
+object-fit: cover;
+border: 3px solid white;
+margin-bottom: 10px;
+}
+.nombre-creador {
+font-size: 1.1em;
+font-weight: bold;
+color: #ffffff;
+margin: 5px 0 15px 0;
+}
+.boton-canal {
+display: inline-block;
+padding: 8px 15px;
+background-color: #ff0000;
+color: white !important;
+text-decoration: none;
+border-radius: 4px;
+font-weight: 600;
+transition: background-color 0.3s;
+}
+.boton-canal:hover {
+background-color: #470000;
 
-    /* Ajuste para tarjetas de servidor en móviles muy pequeños */
-    .servers-grid {
-        grid-template-columns: 1fr;
-        gap: 15px;
-    }
-
-    .server-card {
-        padding: 15px;
-    }
-
-    .server-name {
-        font-size: 1.2em;
-    }
+}
+/* ==========================================
+9. MEDIA QUERIES (Responsive)
+========================================== */
+@media (min-width: 768px) {
+.tabla-container {
+overflow-x: hidden;
+}
+.tabla-apks {
+min-width: auto;
+width: 100%;
+}
+.tabla-apks .c-btn {
+display: inline-block;
+padding: 5px 10px;
+margin: 0;
+}
+.controles {
+flex-direction: row;
+justify-content: space-between;
+}
+.servers-grid {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+}
+}
+@media (max-width: 600px) {
+.seccion-iconos {
+gap: 20px;
+}
+.icono-circular {
+width: 100px;
+height: 100px;
+}
+.icono-texto {
+font-size: 1em;
+}
+.server-card {
+padding: 15px;
+}
+.server-name {
+font-size: 1.2em;
+}
+.server-stats {
+grid-template-columns: 1fr;
 }
 
+.server-header {
+flex-direction: column;
+align-items: flex-start;
+}
+.status-badge {
+align-self: flex-start;
+margin-top: 10px;
+}
+}
