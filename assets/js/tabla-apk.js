@@ -1,6 +1,6 @@
 /**
- * Datos de la tabla de APKS.
- * Se almacena el HTML completo de cada celda para preservar el formato, enlaces y clases.
+ * Datos de la tabla de APKS (Datos originales).
+ * Se almacena el HTML completo de cada celda.
  */
 const apkData = [
   {
@@ -65,8 +65,11 @@ const apkData = [
   }
 ];
 
-// Función para generar las filas de la tabla
-function renderTableRows() {
+
+// FUNCIÓN PRINCIPAL DE RENDERIZADO (Ahora acepta datos filtrados)
+function renderTableRows(dataToRender) {
+  // Usa los datos proporcionados o los datos originales si no se pasa nada
+  const data = dataToRender || apkData;
   const tbody = document.getElementById('tablaBody');
 
   if (!tbody) {
@@ -74,8 +77,14 @@ function renderTableRows() {
     return;
   }
 
-  // Genera el HTML de las filas usando el array de datos
-  const rowsHtml = apkData.map(row => {
+  // Si no hay resultados de búsqueda, muestra un mensaje
+  if (data.length === 0) {
+      tbody.innerHTML = '<tr><td colspan="4" style="text-align: center; padding: 20px;">No se encontraron resultados para la búsqueda.</td></tr>';
+      return;
+  }
+
+  // Genera el HTML de las filas
+  const rowsHtml = data.map(row => {
     return `
       <tr>
         <td>${row.creatorHtml}</td>
@@ -90,5 +99,47 @@ function renderTableRows() {
   tbody.innerHTML = rowsHtml;
 }
 
-// Ejecuta la función cuando el documento esté completamente cargado
-document.addEventListener('DOMContentLoaded', renderTableRows);
+
+// FUNCIÓN DE BÚSQUEDA
+function buscar() {
+  const input = document.getElementById('inputBusqueda');
+  const searchTerm = input.value.toLowerCase().trim();
+
+  if (searchTerm.length < 2) {
+      alert('Por favor, ingresa al menos 2 caracteres para buscar.');
+      return;
+  }
+
+  const filteredData = apkData.filter(row => {
+    // Concatena y normaliza el texto de las celdas para la búsqueda
+    const fullText = (
+        row.creatorHtml + 
+        row.versionHtml + 
+        row.descriptionHtml
+    ).toLowerCase();
+
+    // Devuelve TRUE si el texto contiene el término de búsqueda
+    return fullText.includes(searchTerm);
+  });
+
+  // Renderiza la tabla con los datos filtrados
+  renderTableRows(filteredData);
+}
+
+
+// FUNCIÓN PARA LIMPIAR Y RESTAURAR
+function limpiarBusqueda() {
+  const input = document.getElementById('inputBusqueda');
+  
+  // Limpia el campo de texto
+  input.value = '';
+  
+  // Renderiza la tabla con los datos originales
+  renderTableRows(apkData);
+}
+
+
+// Llama a la función de renderizado inicial cuando el documento esté cargado
+document.addEventListener('DOMContentLoaded', () => {
+    renderTableRows(apkData);
+});
