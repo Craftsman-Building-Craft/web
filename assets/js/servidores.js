@@ -4,7 +4,7 @@ const servers = [
   { name:'GalaxyCraft', address:'GalaxyCraft.ddns.net', port:25567, type:'bedrock' },
   { name:'Del Main', address:'delmain.holynodes.com', port:25535, type:'bedrock' },
   { name:'Astral Pe', address:'play-astral.sytes.net', port:25788, type:'bedrock' },
-  { name:'Gola', address:'sdm.hypermine.net', port:25788, type:'java' }
+  { name:'Gola', address:'bedrock.opblocks.com', port:19132, type:'java' }
 ];
 
 
