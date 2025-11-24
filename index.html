@@ -1053,180 +1053,200 @@ href="https://mega.nz/folder/Sl4n1ALJ#DYlGZmma--f9329N00tlbw" class="c-btn">
 </div>
 </div>
 <div class="contenedor">
-<h1 id="servidores">Lista de Servidores</h1>
+  <h1 id="servidores" class="encabezado-principal">Lista de Servidores</h1>
+  
+  <div class="servers-grid" id="serversContainer">
+    </div>
+</div>
 
-<div class="contenedor">
-<h1 id="servidores" class="encabezado-principal">Lista de Servidores</h1>
-<div class="servers-grid" id="serversContainer">
-</div>
-</div>
 <button class="refresh-btn" id="refreshBtn" title="Actualizar">↻</button>
+
 <div id="serverModal" class="modal-overlay">
-<div class="modal-content">
-<span class="close-modal" onclick="closeModal()">&times;</span>
-<h2 id="modalTitle">Nombre del Server</h2>
-<div class="modal-info-row">
-<div class="info-box">
-<span class="label">IP / Dirección</span>
-<span id="modalIp" class="value">...</span>
-</div>
-<div class="info-box">
-<span class="label">Puerto</span>
-<span id="modalPort" class="value">...</span>
-</div>
-</div>
-<button class="modal-btn" id="btnCopyIp" onclick="copyFromModal('ip')">copiar
-ip</button>
+  <div class="modal-content">
+    <span class="close-modal" onclick="closeModal()">&times;</span>
+    <h2 id="modalTitle">Nombre del Server</h2>
+    
+    <div class="modal-info-row">
+      <div class="info-box">
+        <span class="label">IP / Dirección</span>
+        <span id="modalIp" class="value">...</span>
+      </div>
+      <div class="info-box">
+        <span class="label">Puerto</span>
+        <span id="modalPort" class="value">...</span>
+      </div>
+    </div>
 
-<button class="modal-btn" id="btnCopyPort" onclick="copyFromModal('port')">copiar
-puerto</button>
+    <button class="modal-btn" id="btnCopyIp" onclick="copyFromModal('ip')">
+      Copiar IP
+    </button>
+
+    <button class="modal-btn" id="btnCopyPort" onclick="copyFromModal('port')">
+      Copiar Puerto
+    </button>
+  </div>
 </div>
-</div>
+
 <script>
-// --- 1. CONFIGURACIÓN DE SERVIDORES ---
-// ¡AQUÍ AGREGAS TUS SERVIDORES!
-// Edita esta lista y aparecerán automáticamente en la página.
-const servers = [
-{
-name: 'SuperLand',
-address: 'SuperLandCity.ddns.net',
-port: 25535,
-type: 'bedrock'
-},
-{
-name: 'GalaxyCraft',
-address: 'GalaxyCraft.ddns.net',
-port: 25567,
-type: 'bedrock'
-},
-{
-name: 'Del Main',
-address: 'delmain.holynodes.com',
-port: 25535,
-type: 'bedrock'
-},
-{
-name: 'Astral Pe',
-address: 'play-astral.sytes.net',
-port: 25788,
-type: 'bedrock'
-},
-{
-name: 'Gola',
-address: 'sdm.hypermine.net',
-port: 25788,
-type: 'java'
-}
-// Copia y pega un bloque {} para agregar otro servidor
-];
-// --- 2. LÓGICA DEL MODAL ---
-let currentServerData = {};
-function openModal(name, ip, port) {
-const modal = document.getElementById('serverModal');
-document.getElementById('modalTitle').textContent = name;
-document.getElementById('modalIp').textContent = ip;
-document.getElementById('modalPort').textContent = port;
-currentServerData = { ip: ip, port: port };
-modal.style.display = 'flex';
+  // --- 1. CONFIGURACIÓN DE SERVIDORES ---
+  const servers = [
+    {
+      name: 'SuperLand',
+      address: 'SuperLandCity.ddns.net',
+      port: 25535,
+      type: 'bedrock'
+    },
+    {
+      name: 'GalaxyCraft',
+      address: 'GalaxyCraft.ddns.net',
+      port: 25567,
+      type: 'bedrock'
+    },
+    {
+      name: 'Del Main',
+      address: 'delmain.holynodes.com',
+      port: 25535,
+      type: 'bedrock'
+    },
+    {
+      name: 'Astral Pe',
+      address: 'play-astral.sytes.net',
+      port: 25788,
+      type: 'bedrock'
+    },
+    {
+      name: 'Gola',
+      address: 'sdm.hypermine.net',
+      port: 25788,
+      type: 'java'
+    }
+  ];
 
-}
-function closeModal() {
-document.getElementById('serverModal').style.display = 'none';
-}
-window.onclick = function(event) {
-const modal = document.getElementById('serverModal');
-if (event.target == modal) closeModal();
-}
-function copyFromModal(type) {
-const text = type === 'ip' ? currentServerData.ip : currentServerData.port;
-const btnId = type === 'ip' ? 'btnCopyIp' : 'btnCopyPort';
-const btn = document.getElementById(btnId);
-const originalText = btn.innerText;
-navigator.clipboard.writeText(text).then(() => {
-btn.innerText = "¡COPIADO!";
-btn.style.backgroundColor = "white";
-btn.style.color = "#00b894";
-setTimeout(() => {
-btn.innerText = originalText;
-btn.style.backgroundColor = "transparent";
-btn.style.color = "white";
-}, 1500);
-});
-}
-// --- 3. LÓGICA DE CARGA DE SERVIDORES ---
-async function getServerStatus(server) {
-try {
-const endpoint = server.type === 'bedrock'
-? `https://api.mcsrvstat.us/bedrock/3/${server.address}:${server.port}`
-: `https://api.mcsrvstat.us/3/${server.address}:${server.port}`;
-const response = await fetch(endpoint);
-return await response.json();
-} catch (error) {
-console.error(`Error:`, error);
-return { online: false };
-}
-}
-function createServerRow(server, status) {
-const row = document.createElement('div');
-row.className = 'server-row';
+  // --- 2. LÓGICA DEL MODAL ---
+  let currentServerData = {};
 
-const isOnline = status.online;
-const icon = status.icon || 'assets/images/Icons/servidores.png';
-row.innerHTML = `
-<div class="server-row-left">
-<img src="${icon}" class="server-icon-small"
-onerror="this.src='https://via.placeholder.com/50'">
-<div class="server-info-text">
-<div class="server-name-row">${server.name}</div>
-<div class="server-status-row">
-<span class="dot ${isOnline ? 'online' : 'offline'}"></span>
-<span style="color: ${isOnline ? '#00b894' : '#ff4757'}">
-${isOnline ? 'En Línea' : 'Offline'}
-</span>
-${isOnline ? `<span style="color:#aaa;
-font-size:0.8em">(${status.players.online} jug.)</span>` : ''}
-</div>
-</div>
-</div>
-<button class="btn-jugar" onclick="openModal('${server.name}',
-'${server.address}', '${server.port}')">
-JUGAR
-</button>
-`;
-return row;
-}
-async function loadServers() {
-const container = document.getElementById('serversContainer');
-const refreshBtn = document.getElementById('refreshBtn');
-refreshBtn.classList.add('spinning');
-container.innerHTML = '';
-// Skeleton (Cargando...)
-servers.forEach(() => {
-const loadingRow = document.createElement('div');
-loadingRow.className = 'server-row';
-loadingRow.innerHTML = `
-<div class="server-row-left">
-<div style="width:50px; height:50px; background:#444;
-border-radius:8px;"></div>
-<div class="server-info-text">
-<span style="color:#aaa">Cargando...</span>
-</div>
-</div>
-`;
+  function openModal(name, ip, port) {
+    const modal = document.getElementById('serverModal');
+    document.getElementById('modalTitle').textContent = name;
+    document.getElementById('modalIp').textContent = ip;
+    document.getElementById('modalPort').textContent = port;
+    currentServerData = { ip: ip, port: port };
+    modal.style.display = 'flex';
+  }
 
-container.appendChild(loadingRow);
-});
-// Carga real
-for (let i = 0; i < servers.length; i++) {
-const server = servers[i];
-const status = await getServerStatus(server);
-const row = createServerRow(server, status);
-container.children[i].replaceWith(row);
-}
-refreshBtn.classList.remove('spinning');
-}
-document.getElementById('refreshBtn').addEventListener('click', loadServers);
-loadServers();
+  function closeModal() {
+    document.getElementById('serverModal').style.display = 'none';
+  }
+
+  window.onclick = function(event) {
+    const modal = document.getElementById('serverModal');
+    if (event.target == modal) closeModal();
+  }
+
+  function copyFromModal(type) {
+    const text = type === 'ip' ? currentServerData.ip : currentServerData.port;
+    const btnId = type === 'ip' ? 'btnCopyIp' : 'btnCopyPort';
+    const btn = document.getElementById(btnId);
+    const originalText = btn.innerText;
+
+    navigator.clipboard.writeText(text).then(() => {
+      btn.innerText = "¡COPIADO!";
+      btn.style.backgroundColor = "white";
+      btn.style.color = "#00b894";
+      
+      setTimeout(() => {
+        btn.innerText = originalText;
+        btn.style.backgroundColor = "transparent";
+        btn.style.color = "white"; // Asegúrate que esto coincida con tu CSS original
+      }, 1500);
+    });
+  }
+
+  // --- 3. LÓGICA DE CARGA DE SERVIDORES ---
+  async function getServerStatus(server) {
+    try {
+      const endpoint = server.type === 'bedrock' 
+        ? `https://api.mcsrvstat.us/bedrock/3/${server.address}:${server.port}` 
+        : `https://api.mcsrvstat.us/3/${server.address}:${server.port}`;
+        
+      const response = await fetch(endpoint);
+      return await response.json();
+    } catch (error) {
+      console.error(`Error cargando ${server.name}:`, error);
+      return { online: false };
+    }
+  }
+
+  function createServerRow(server, status) {
+    const row = document.createElement('div');
+    row.className = 'server-row';
+
+    const isOnline = status.online;
+    // Si no hay icono, usa el default. Si el server está offline, mantén el default.
+    const icon = (isOnline && status.icon) ? status.icon : 'assets/images/Icons/servidores.png';
+
+    row.innerHTML = `
+      <div class="server-row-left">
+        <img src="${icon}" class="server-icon-small" onerror="this.src='https://via.placeholder.com/50'">
+        <div class="server-info-text">
+          <div class="server-name-row">${server.name}</div>
+          <div class="server-status-row">
+            <span class="dot ${isOnline ? 'online' : 'offline'}"></span>
+            <span style="color: ${isOnline ? '#00b894' : '#ff4757'}">
+              ${isOnline ? 'En Línea' : 'Offline'}
+            </span>
+            ${isOnline ? `<span style="color:#aaa; font-size:0.8em">(${status.players.online} jug.)</span>` : ''}
+          </div>
+        </div>
+      </div>
+      <button class="btn-jugar" onclick="openModal('${server.name}', '${server.address}', '${server.port}')">
+        JUGAR
+      </button>
+    `;
+    return row;
+  }
+
+  async function loadServers() {
+    const container = document.getElementById('serversContainer');
+    const refreshBtn = document.getElementById('refreshBtn');
+    
+    refreshBtn.classList.add('spinning');
+    container.innerHTML = ''; // Limpiar contenedor
+
+    // 1. Mostrar Skeleton (Cargando...)
+    servers.forEach(() => {
+      const loadingRow = document.createElement('div');
+      loadingRow.className = 'server-row';
+      loadingRow.innerHTML = `
+        <div class="server-row-left">
+          <div style="width:50px; height:50px; background:#444; border-radius:8px;"></div>
+          <div class="server-info-text">
+            <span style="color:#aaa">Cargando...</span>
+          </div>
+        </div>
+      `;
+      container.appendChild(loadingRow);
+    });
+
+    // 2. Carga real de datos
+    // Usamos un for loop simple para reemplazar en orden
+    for (let i = 0; i < servers.length; i++) {
+      const server = servers[i];
+      const status = await getServerStatus(server);
+      const row = createServerRow(server, status);
+      
+      // Reemplazar el skeleton correspondiente
+      if (container.children[i]) {
+        container.children[i].replaceWith(row);
+      }
+    }
+
+    refreshBtn.classList.remove('spinning');
+  }
+
+  // Inicializar
+  document.getElementById('refreshBtn').addEventListener('click', loadServers);
+  loadServers();
 </script>
 <h6 class="añadir-tu-servidor">Si Quieres Que Agregue Tu Servidor o Un Servidor Que
 Conozcan.
@@ -1415,6 +1435,7 @@ mensajeExistente.remove();
 <a href="Política-de-Privacidad.html">Política de Privacidad</a>
 </body>
 </html>
+
 
 
 
