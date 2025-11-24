@@ -141,35 +141,28 @@
 <div class="contenedor">
         <h1 id="servidores" class="encabezado-principal">Lista de Servidores</h1>
 
-        <div class="servers-grid" id="serversContainer">
+      <div class="server-status-widget">
+        <h2>🚀 Estado de Servidores</h2>
+        
+        <div class="controls">
+            <button id="refreshBtn">
+                <span class="refresh-icon">🔄</span> Refrescar
+            </button>
+        </div>
+
+        <div id="serversContainer">
             </div>
+    </div>
 
-        <button class="refresh-btn" id="refreshBtn">↻</button>
-
-        <div id="serverModal" class="modal-overlay">
-            <div class="modal-content">
-                <span class="close-modal" onclick="closeModal()">&times;</span>
-
-                <h2 id="modalTitle">Nombre del Server</h2>
-
-                <div class="modal-info-row">
-                    <div class="info-box">
-                        <span class="label">IP / Dirección</span>
-                        <span id="modalIp" class="value">...</span>
-                    </div>
-                    <div class="info-box">
-                        <span class="label">Puerto</span>
-                        <span id="modalPort" class="value">...</span>
-                    </div>
-                </div>
-
-                <button class="modal-btn" onclick="copyFromModal('ip')">Copiar IP</button>
-                <button class="modal-btn" onclick="copyFromModal('port')">Copiar Puerto</button>
-            </div>
-
-            <p class="añadir-tu-servidor">
-                Si quieres agregar tu servidor<a target="_blank" href="solitud.html">Haz Click Aquí</a>
-            </p>
+    <div id="serverModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <h3 id="modalServerName"></h3>
+            <p>Conéctate a:</p>
+            <p>🌐 Dirección: <strong id="modalServerAddress"></strong></p>
+            <p>🚪 Puerto: <strong id="modalServerPort"></strong></p>
+            <button class="copy-btn" onclick="copyToClipboard('modalServerAddress')">Copiar Dirección</button>
+            <button class="copy-btn" onclick="copyToClipboard('modalServerPort')">Copiar Puerto</button>
         </div>
     </div>
 <br>
@@ -260,4 +253,5 @@
   -------------------------------------------------------------------------------------------------------------------------------------->
 </body>
 </html>
+
 
