@@ -82,11 +82,19 @@ const creadores = [
   }
 ];
 
+const creadores = [
+  {
+    nombre: "Astronauta29",
+    imagen: "./assets/images/FotosdePerfil/astronauta29.jpg",
+    link: "https://youtube.com/@astronautaa29"
+  },
+  // ... todos los demás objetos de creadores ...
+];
+
 function cargarCreadores() {
   const container = document.querySelector(".grid-creadores");
   container.innerHTML = "";
 
-  // El código forEach funciona perfectamente ahora que 'creadores' es un array de objetos
   creadores.forEach(c => {
     const card = document.createElement("div");
     card.className = "tarjeta-creador";
