@@ -35,3 +35,23 @@ const creadores = [
     link: "https://youtube.com/@jahiryt"
   }
 ];
+
+function cargarCreadores() {
+  const container = document.querySelector(".grid-creadores");
+  container.innerHTML = "";
+
+  creadores.forEach(c => {
+    const card = document.createElement("div");
+    card.className = "tarjeta-creador";
+
+    card.innerHTML = `
+      <img src="${c.imagen}" class="perfil-foto">
+      <p class="nombre-creador">${c.nombre}</p>
+      <a href="${c.link}" target="_blank" class="boton-canal">Ir a Canal</a>
+    `;
+
+    container.appendChild(card);
+  });
+}
+
+document.addEventListener("DOMContentLoaded", cargarCreadores);
