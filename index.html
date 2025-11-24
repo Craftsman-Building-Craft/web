@@ -8,56 +8,92 @@
 <link rel="stylesheet" href="./assets/css/styles.css">
 </head>
 <body>
-
 <div class="fondo">
-  <div class="seccion-iconos">
+  
+<!--// ================================================================ \\
+//======================= [ ICONOS CIRCULARES ] ======================= \\
+// ==================================================================== \\
+//======================= [ ICONOS CIRCULARES ] ======================= \\
+// ==================================================================== \\-->
+  
+    <div class="seccion-iconos">
     <a href="#Diseños" class="icono-link">
-      <div class="icono-circular">
-        <img src="./assets/images/Icons/Texturas.png" alt="Icono Texturas">
-      </div>
-      <p class="icono-texto">Texturas</p>
+        <div class="icono-circular">
+            <img src="./assets/images/Icons/Texturas.png" alt="Icono Texturas">
+        </div>
+        <p class="icono-texto">Texturas</p>
     </a>
 
     <a href="#servidores" class="icono-link">
-      <div class="icono-circular">
-        <img src="./assets/images/Icons/servidores.png" alt="Icono Servidores">
-      </div>
-      <p class="icono-texto">Servidores</p>
+        <div class="icono-circular">
+            <img src="./assets/images/Icons/servidores.png" alt="Icono Servidores">
+        </div>
+        <p class="icono-texto">Servidores</p>
     </a>
 
     <a href="#Tutoriales" class="icono-link">
-      <div class="icono-circular">
-        <img src="./assets/images/Icons/Tutoriales.png" alt="Icono Tutoriales">
-      </div>
-      <p class="icono-texto">Tutoriales</p>
+        <div class="icono-circular">
+            <img src="./assets/images/Icons/Tutoriales.png" alt="Icono Tutoriales">
+        </div>
+        <p class="icono-texto">Tutoriales</p>
     </a>
-  </div>
 </div>
 
+
+  
+<!--// =============================================================== \\
+// ============================ [ WELCOME ] =========================== \\
+// ==================================================================== \\
+// ============================ [ WELCOME ] ============================ \\
+// ==================================================================== \\-->
+  
 <div class="contenedor">
 <h1>¡Bienvenido/a al sitio web de
 <a target="_blank" href="https://play.google.com/store/apps/details?id=com.craftsman.go">Craftsman: Building Craft</a></h1>
 <p>Nos hemos encargado de reunir todo lo necesario para mejorar tu experiencia en el juego.</p>
 
 <h2>¿Qué puedes encontrar aquí?</h2>
-<ul>
-  <li><strong><a href="#Diseños">Diseños y Texturas (APKs)</a></strong></li>
-  <li><strong><a href="#servidores">Servidores para jugar</a></strong></li>
-  <li><strong><a href="#Tutoriales">Tutoriales y Consejos</a></strong></li>
-  <li><strong><a href="#creadores">Creadores de contenido</a></strong></li>
-</ul>
+
+  
+
+<!--// =============================================================== \\
+// ========================== [ CATEGORIAS ] ========================== \\
+// ==================================================================== \\
+// ========================== [ CATEGORIAS ] ========================== \\
+// ==================================================================== \\-->
+  
+<ul><li>
+    <strong><a href="#Diseños">🎨 Diseños y Texturas (APKs)</a></strong>
+    <p>Explora una colección de **APKs Modificadas** con diseños, **packs de texturas** y shaders personalizados que transformarán la apariencia y la **experiencia visual** de tu juego. ¡Dale un toque único y renovado a tu mundo!</p>
+</li>
+<li>
+    <strong><a href="#servidores">🌐 Servidores para Jugar</a></strong>
+    <p>Únete a nuestra selección de **servidores activos** donde podrás jugar en línea con amigos y otros usuarios. Encuentra mundos de **Supervivencia (Survival)**, **PVP** y eventos especiales para que la diversión nunca termine.</p>
+</li>
+<li>
+    <strong><a href="#Tutoriales">💡 Tutoriales y Consejos</a></strong>
+    <p>Aprende todos los trucos y secretos del juego con nuestra **guía completa**. Desde **tutoriales paso a paso** para principiantes hasta **consejos avanzados** para construir, farmear o configurar tu APK. Domina el juego rápidamente.</p>
+</li>
+<li>
+    <strong><a href="#creadores">🎥 Creadores de Contenido</a></strong>
+    <p>Conoce y apoya a los **mejores talentos** de la comunidad. Te presentamos a los **creadores más influyentes** que comparten sus diseños, *gameplays* y novedades, con enlaces directos a su contenido.</p>
+</li></ul>
 </div>
 
-<div class="contenedor">
-<h1 id="Diseños" class="encabezado-principal">APK's Craftsman: Building Craft</h1>
 
-<div class="controles">
-  <div class="buscador">
-    <input type="text" id="inputBusqueda" placeholder="Buscar por creador, versión o descripción...">
-    <button onclick="buscar()">🔍 Buscar</button>
-  </div>
-  <button onclick="limpiarBusqueda()">✖ Limpiar</button>
-</div>
+
+
+
+
+
+  
+
+  
+<!--// ================================================================ \\
+//========================== [ TABLA APK's ] ========================== \\
+// ==================================================================== \\
+//========================== [ TABLA APK's ] ========================== \\
+// ==================================================================== \\-->
 
 <div class="tabla-container">
 <table class="tabla-apks">
@@ -73,6 +109,14 @@
             </tbody>
 </table>
 </div>
+
+
+  
+<!--// ================================================================ \\
+//====================== [ TABLA DE SERVIDORES ] ====================== \\
+// ==================================================================== \\
+//====================== [ TABLA DE SERVIDORES ] ====================== \\
+// ==================================================================== \\-->
 
 <div class="contenedor">
         <h1 id="servidores" class="encabezado-principal">Lista de Servidores</h1>
@@ -115,11 +159,28 @@
 
 <div class="grid-creadores"></div>
 
+
+  
+<!--// =============================================================== \\
+// ============================ [ FOOTER ] =========================== \\
+// ==================================================================== \\
+// ============================ [ FOOTER ] ============================ \\
+// ==================================================================== \\-->
+  
 <footer>
   <div class="apoyo">
     <p>Apoya a los creadores de contenido mencionados.</p>
   </div>
 </footer>
+
+
+
+<!--// =============================================================== \\
+// ============================ [ SCRIPT ] ============================ \\
+// ==================================================================== \\
+// ============================ [ SCRIPT ] ============================ \\
+// ==================================================================== \\-->
+  
 <script src="./assets/js/busqueda.js"></script>
 <script src="./assets/js/modal.js"></script>
 <script src="./assets/js/servidores.js"></script>
@@ -127,10 +188,18 @@
 <script src="./assets/js/tabla-apk.js"></script>
 
 
+  
+<!--// =============================================================================== \\
+// ============================ [ TERMINOS Y CONDICIONES ] ============================ \\
+// ==================================================================================== \\
+// ============================= [ POLITICA DE PRIVACIDAD ] ============================ \\
+// ===================================================================================== \\-->
+  
 <a href="Términos-y-Condiciones.html">Términos y Condiciones</a>
 <a href="Política-de-Privacidad.html">Política de Privacidad</a>
 
 </body>
 </html>
+
 
 
