@@ -138,59 +138,60 @@
 //====================== [ TABLA DE SERVIDORES ] ====================== \\
 // ==================================================================== \\-->
 
-<!-- Contenedor principal -->
-<div class="servers-grid" id="serversContainer"></div>
-
-<!-- Botón flotante refrescar -->
-<button id="refreshBtn" class="refresh-btn" title="Actualizar">⟳</button>
-
-<!-- Modal (overlay) -->
-<div id="serverModal" class="modal-overlay" aria-hidden="true">
-  <div class="modal-content" role="dialog" aria-modal="true">
-    <span class="close-modal" id="closeModalBtn">&times;</span>
-
-    <!-- Fondo del modal (puedes reemplazar la URL) -->
-    <div id="modalBg" style="background-image: url('./assets/images/tierra.jpg'); 
-                             background-size: cover; background-position: center;
-                             position:absolute; inset:0; border-radius:11px; opacity:0.12;"></div>
-
-    <h2 id="modalServerName">Nombre del Server</h2>
-
-    <div class="modal-info-row">
-      <div class="info-box">
-        <div class="label">IP</div>
-        <div class="value" id="modalServerIP">-</div>
-      </div>
-      <div class="info-box">
-        <div class="label">Puerto</div>
-        <div class="value" id="modalServerPort">-</div>
-      </div>
+<div class="servers-grid" id="serversContainer">
+                </div>
+            
+        </div>
     </div>
 
-    <div class="server-stats">
-      <div class="stat-box">
-        <div class="stat-value" id="modalPlayers">-</div>
-        <div class="pequeño">Jugadores</div>
-      </div>
-      <div class="stat-box">
-        <div class="stat-value" id="modalPing">-</div>
-        <div class="pequeño">Ping</div>
-      </div>
-    </div>
+    <button class="refresh-btn" id="refreshBtn">↻</button>
 
-    <div class="copy-section">
-      <input id="modalCopyIP" class="copy-input" readonly>
-      <button class="copy-btn c-btn" id="copyIpBtn">Copiar IP</button>
-    </div>
+    <div class="modal-overlay" id="serverModal" aria-hidden="true">
+        
+        <div class="modal-content" style="background-image: url('URL_DE_TU_IMAGEN_DE_FONDO'); background-size: cover; background-position: center;">
+            
+            <span class="close-modal" id="closeModalBtn">&times;</span>
 
-    <div class="copy-section" style="margin-top:10px;">
-      <input id="modalCopyPort" class="copy-input" readonly>
-      <button class="copy-btn c-btn" id="copyPortBtn">Copiar Puerto</button>
-    </div>
+            <h2 id="modalServerName">Nombre del Server Cargado</h2>
+            
+            <div class="modal-info-row">
+                <div class="info-box">
+                    <span class="label">IP</span>
+                    <span class="value" id="modalServerIP">...</span>
+                </div>
+                <div class="info-box">
+                    <span class="label">Puerto</span>
+                    <span class="value" id="modalServerPort">...</span>
+                </div>
+            </div>
 
-    <button class="modal-btn" id="modalActionBtn">Ir al servidor / Conectar</button>
-  </div>
-</div>
+            <div class="modal-info-row">
+                <div class="info-box">
+                    <span class="label">Jugadores</span>
+                    <span class="value" id="modalPlayers">...</span>
+                </div>
+                <div class="info-box">
+                    <span class="label">Ping</span>
+                    <span class="value" id="modalPing">...</span>
+                </div>
+            </div>
+
+            <input type="hidden" id="modalCopyIP">
+            <input type="hidden" id="modalCopyPort">
+
+            <button class="modal-btn" id="copyIpBtn">
+                Copiar IP
+            </button>
+            <button class="modal-btn" id="copyPortBtn">
+                Copiar Puerto
+            </button>
+            
+            <button class="modal-btn" id="modalActionBtn" style="margin-top:20px; background-color: var(--color-red-primary); border-color: var(--color-red-primary);">
+                REPORTAR ERROR
+            </button>
+            
+        </div>
+    </div>
 
   
 <br>
@@ -281,6 +282,7 @@
   -------------------------------------------------------------------------------------------------------------------------------------->
 </body>
 </html>
+
 
 
 
