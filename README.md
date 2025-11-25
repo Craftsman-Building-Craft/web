@@ -1,7 +1,6 @@
-<p align="center">
-  <img src="assets/images/welcome.png" width="600" alt="Sección Entrada">
-</p>
 # 🛠️ Craftsman Building Craft Web
+
+<p align="center"><img src="assets/images/welcome.png" width="600" alt="Sección Entrada"></p>
 
 **El centro definitivo y hecho por la comunidad para expandir tu experiencia en Craftsman: Building Craft.**
 
