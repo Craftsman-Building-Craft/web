@@ -1,334 +1,4 @@
-/* ==========================================
-1. DIRECTIVAS Y VARIABLES
-========================================== */
-:root {
---color-dark: #110d1a;
---color-primary: #b197fc;
---color-red-primary: #ff4757;
---color-green-primary: #00b894;
-accent-color: var(--color-primary);
-}
-/* ==========================================
-2. RESETS
-========================================== */
-*, *::before, *::after {
-margin: 0;
-padding: 0;
-box-sizing: border-box;
-}
-/* ==========================================
-3. ESTILOS BASE Y TIPOGRAFÍA
-========================================== */
-body {
-font-family: Arial, sans-serif;
-background-attachment: fixed;
-background-image: url(../images/Fondo.png
-);
-background-repeat: no-repeat;
-background-size: cover;
-background-position: center center;
-color: #ffffff;
-line-height: 1.6;
-margin: 0;
-padding: 20px;
-}
-h1 {
-color: #ffffff;
-border-bottom: 2px solid #aaaaaa;
-
-padding-bottom: 10px;
-margin-bottom: 20px;
-text-align: center;
-}
-h2 {
-color: #ffffff;
-margin-top: 25px;
-margin-bottom: 15px;
-}
-a {
-color: #4da6ff;
-text-decoration: none;
-}
-a:hover {
-text-decoration: underline;
-}
-ul {
-list-style-type: none;
-padding: 0;
-}
-li {
-background-color: #333333;
-color: white;
-padding: 10px 15px;
-margin-bottom: 8px;
-border-left: 5px solid #666666;
-}
-/* ==========================================
-4. LAYOUTS Y ESTRUCTURA
-========================================== */
-.contenedor {
-max-width: 1000px;
-margin: 40px auto;
-padding: 30px;
-background-color: #00000063;
-border: 1px solid #444444;
-box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-.fondo {
-min-height: 100vh;
-display: flex;
-
-flex-direction: column;
-justify-content: center;
-align-items: center;
-padding: 80px 30px 30px 30px;
-}
-.apoyo {
-margin-top: 30px;
-padding: 15px;
-background-color: #444444;
-color: white;
-border-top: 1px solid #666666;
-text-align: center;
-font-style: italic;
-}
-/* ==========================================
-5. FORMULARIOS Y BOTONES
-========================================== */
-.controles {
-display: flex;
-gap: 10px;
-margin-bottom: 20px;
-flex-wrap: wrap;
-}
-.buscador {
-display: flex;
-gap: 10px;
-flex: 1;
-min-width: 300px;
-}
-input[type="text"] {
-flex: 1;
-padding: 12px 20px;
-border: 2px solid #777777;
-border-radius: 8px;
-font-size: 16px;
-transition: all 0.3s;
-color: white;
-background-color: #555555;
-}
-input[type="text"]:focus {
-outline: none;
-border-color: #999999;
-box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.1);
-
-}
-button {
-padding: 12px 25px;
-background: #777777;
-color: white;
-border: none;
-border-radius: 8px;
-cursor: pointer;
-font-size: 16px;
-font-weight: 600;
-transition: all 0.3s;
-}
-button:hover {
-background: #999999;
-transform: translateY(-2px);
-box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-}
-button:active {
-transform: translateY(0);
-}
-/* Botones MEGA (C-BTN) */
-.c-btn {
-position: relative;
-overflow: hidden;
-padding: 0.85rem 2rem;
-display: inline-flex;
-align-items: center;
-justify-content: center;
-color: var(--color-red-primary);
-text-decoration: none;
-border-radius: 8px;
-background-color: transparent;
-backface-visibility: hidden;
-box-shadow: inset 0 0 0 1px var(--color-red-primary);
-transform: translateZ(0);
-}
-.c-btn::after {
-content: "";
-pointer-events: none;
-position: absolute;
-top: 0;
-left: 0;
-z-index: 1;
-
-height: 120%;
-width: 120%;
-border-radius: 20%;
-background-color: var(--color-red-primary);
-scale: 0 0;
-translate: 0 140%;
-transition: scale 0.6s cubic-bezier(0.215, 0.61, 0.355, 1), translate 0.4s
-cubic-bezier(0.215, 0.61, 0.355, 1);
-}
-.c-btn__label {
-display: inline-flex;
-align-items: center;
-gap: 1rem;
-z-index: 2;
-font-size: 1.2rem;
-letter-spacing: 0.025em;
-transition: color 0.32s ease-in-out;
-}
-.c-btn:hover span {
-color: var(--color-dark);
-}
-.c-btn:hover::after {
-scale: 1.5 1.5;
-translate: 0 0;
-border-radius: 50%;
-}
-/* ==========================================
-6. TABLAS
-========================================== */
-.tabla-container {
-overflow-x: auto;
-width: 100%;
--webkit-overflow-scrolling: touch;
-margin-bottom: 20px;
-}
-.encabezado-principal {
-background: linear-gradient(135deg, #000000 0%, #222222 100%);
-color: white;
-padding: 20px;
-font-size: 1.5em;
-text-align: center;
-}
-
-table {
-width: 100%;
-border-collapse: collapse;
-}
-th, td {
-border: none;
-padding: 10px;
-text-align: left;
-color: white;
-}
-tbody td {
-border-bottom: 1px solid #777777;
-}
-thead th {
-border-bottom: 3px solid #666666;
-background-color: #444444;
-color: white;
-position: relative;
-cursor: pointer;
-}
-thead th:hover {
-background: #555555;
-}
-/* Estilos Tabla APKS */
-.tabla-apks {
-width: 100%;
-border-collapse: collapse;
-margin-top: 20px;
-min-width: 650px;
-}
-.tabla-apks td, .tabla-apks th {
-padding: 8px 5px;
-font-size: 0.9em;
-white-space: nowrap;
-}
-tbody tr {
-transition: all 0.3s;
-color: white;
-}
-tbody tr:hover {
-
-background: #666666;
-transform: scale(1.01);
-}
-.no-resultados {
-text-align: center;
-padding: 40px;
-color: #ffffff;
-font-size: 1.1em;
-}
-.pequeño {
-font-size: 10px;
-text-align: right;
-}
-/* ==========================================
-7. TARJETAS DE SERVIDOR (Server Cards)
-========================================== */
-.servers-grid {
-display: flex;
-flex-direction: column;
-gap: 25px;
-margin-bottom: 30px;
-margin-top: 20px;
-}
-.server-card {
-background-color: #00000063;
-border: 1px solid #444444;
-border-radius: 15px;
-padding: 25px;
-box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
-transition: transform 0.3s, box-shadow 0.3s;
-color: white;
-overflow: hidden;
-}
-.server-card:hover {
-transform: translateY(-5px);
-box-shadow: 0 8px 25px rgba(0, 0, 0, 0.7);
-}
-.server-header {
-display: flex;
-align-items: center;
-gap: 15px;
-margin-bottom: 20px;
-
-padding-bottom: 15px;
-border-bottom: 2px solid #555555;
-}
-.server-icon {
-width: 64px;
-height: 64px;
-border-radius: 8px;
-box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
-flex-shrink: 0;
-}
-.server-name {
-font-size: 1.5em;
-font-weight: bold;
-color: #ffffff;
-white-space: nowrap;
-overflow: hidden;
-text-overflow: ellipsis;
-}
-.server-address {
-color: #cccccc;
-font-size: 0.9em;
-font-family: 'Courier New', monospace;
-white-space: nowrap;
-overflow: hidden;
-text-overflow: ellipsis;
-}
-.status-badge {
-display: inline-flex;
-align-items: center;
-gap: 8px;
-padding: 8px 16px;
-border-radius: 20px;
-font-weight: bold;
-font-size: 0.9em;
-color: black;
-text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.2);
+px 1px rgba(255, 255, 255, 0.2);
 white-space: nowrap;
 }
 .status-online {
@@ -824,3 +494,309 @@ margin-top: 10px;
 }
 }
 
+
+/* ==========================================
+0. FIX GLOBAL (CRÍTICO)
+========================================== */
+html, body {
+width: 100%;
+max-width: 100%;
+overflow-x: hidden;
+}
+
+/* ==========================================
+1. VARIABLES
+========================================== */
+:root {
+--color-dark: #110d1a;
+--color-primary: #b197fc;
+--color-red-primary: #ff4757;
+--color-green-primary: #00b894;
+accent-color: var(--color-primary);
+}
+
+/* ==========================================
+2. RESET
+========================================== */
+*, *::before, *::after {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+}
+
+/* ==========================================
+3. BODY Y FONDO
+========================================== */
+body {
+font-family: Arial, sans-serif;
+background-image: url(../images/Fondo.png);
+background-repeat: no-repeat;
+background-size: cover;
+background-position: center;
+background-attachment: scroll; /* móvil seguro */
+color: #ffffff;
+line-height: 1.6;
+padding: 10px;
+font-size: clamp(14px, 3.5vw, 16px);
+}
+
+@media (min-width: 1024px) {
+body {
+background-attachment: fixed;
+padding: 40px;
+}
+}
+
+/* ==========================================
+4. TEXTOS
+========================================== */
+h1 {
+text-align: center;
+font-size: clamp(1.5rem, 5vw, 2.2rem);
+border-bottom: 2px solid #aaa;
+padding-bottom: 10px;
+margin-bottom: 20px;
+}
+
+h2 {
+font-size: clamp(1.2rem, 4vw, 1.6rem);
+margin: 25px 0 15px;
+}
+
+a {
+color: #4da6ff;
+text-decoration: none;
+}
+a:hover { text-decoration: underline; }
+
+/* ==========================================
+5. CONTENEDOR PRINCIPAL
+========================================== */
+.contenedor {
+width: 100%;
+max-width: 1000px;
+margin: 20px auto;
+padding: clamp(12px, 4vw, 30px);
+background-color: #00000063;
+border: 1px solid #444;
+box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+overflow: hidden;
+}
+
+/* ==========================================
+6. CONTROLES / BUSCADOR
+========================================== */
+.controles {
+display: flex;
+flex-direction: column;
+gap: 10px;
+margin-bottom: 20px;
+}
+
+.buscador {
+display: flex;
+gap: 10px;
+width: 100%;
+}
+
+input[type="text"] {
+flex: 1;
+padding: 12px;
+border-radius: 8px;
+border: 2px solid #777;
+background: #555;
+color: white;
+}
+
+button {
+padding: 12px;
+border-radius: 8px;
+border: none;
+cursor: pointer;
+font-weight: bold;
+background: #777;
+color: white;
+min-height: 44px;
+}
+
+/* ==========================================
+7. TABLAS RESPONSIVE (FIX DEFINITIVO)
+========================================== */
+.tabla-container {
+width: 100%;
+max-width: 100%;
+overflow-x: auto;
+overflow-y: hidden;
+-webkit-overflow-scrolling: touch;
+}
+
+table,
+.tabla-apks {
+width: 100%;
+max-width: 100%;
+min-width: unset !important;
+border-collapse: collapse;
+font-size: clamp(12px, 3vw, 14px);
+}
+
+th, td {
+padding: 8px;
+white-space: nowrap;
+border-bottom: 1px solid #666;
+}
+
+thead th {
+background: #444;
+}
+
+/* ==========================================
+8. SERVERS GRID
+========================================== */
+.servers-grid {
+display: flex;
+flex-direction: column;
+gap: 15px;
+}
+
+/* ==========================================
+9. SERVER CARD
+========================================== */
+.server-card {
+background: #00000063;
+border: 1px solid #444;
+border-radius: 15px;
+padding: 15px;
+overflow: hidden;
+}
+
+.server-header {
+display: flex;
+flex-direction: column;
+gap: 10px;
+border-bottom: 2px solid #555;
+padding-bottom: 10px;
+}
+
+.server-name,
+.server-address {
+white-space: nowrap;
+overflow: hidden;
+text-overflow: ellipsis;
+max-width: 100%;
+}
+
+/* ==========================================
+10. SERVER ROW (LISTA LINEAL)
+========================================== */
+.server-row {
+display: flex;
+flex-direction: column;
+gap: 15px;
+background: #00000063;
+border-radius: 10px;
+padding: 15px;
+}
+
+.server-row-left {
+display: flex;
+gap: 15px;
+width: 100%;
+}
+
+.btn-jugar {
+width: 100%;
+background: #00b894;
+color: white;
+border-radius: 25px;
+padding: 12px;
+}
+
+/* ==========================================
+11. MODAL
+========================================== */
+.modal-overlay {
+display: none;
+position: fixed;
+inset: 0;
+background: rgba(0,0,0,0.85);
+justify-content: center;
+align-items: center;
+}
+
+.modal-content {
+width: 95%;
+max-width: 450px;
+max-height: 90vh;
+overflow-y: auto;
+padding: 20px;
+border-radius: 15px;
+}
+
+/* ==========================================
+12. ICONOS
+========================================== */
+.seccion-iconos {
+display: flex;
+flex-wrap: wrap;
+justify-content: center;
+gap: 20px;
+}
+
+.icono-circular {
+width: 100px;
+height: 100px;
+border-radius: 50%;
+border: 3px solid white;
+overflow: hidden;
+}
+
+.icono-texto {
+text-align: center;
+font-size: 1em;
+}
+
+/* ==========================================
+13. REFRESH BUTTON
+========================================== */
+.refresh-btn {
+position: fixed;
+bottom: 20px;
+right: 20px;
+width: 50px;
+height: 50px;
+border-radius: 50%;
+background: #444;
+color: white;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+
+/* ==========================================
+14. TABLET
+========================================== */
+@media (min-width: 600px) {
+.controles {
+flex-direction: row;
+}
+}
+
+/* ==========================================
+15. PC
+========================================== */
+@media (min-width: 768px) {
+.servers-grid {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+}
+
+.server-row {
+flex-direction: row;
+justify-content: space-between;
+align-items: center;
+}
+
+.btn-jugar {
+width: auto;
+}
+  }
